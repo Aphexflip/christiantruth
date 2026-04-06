@@ -589,7 +589,8 @@
     const copySiteButton = document.getElementById('copySiteButton');
 
     let claims = loadClaims();
-    let visibleCount = 12;
+    let visibleCount = 8;
+    let scrollLock = false;
 
     function loadClaims() {
       const local = localStorage.getItem(storageKey);
@@ -627,16 +628,22 @@
       refreshCategories();
       const filtered = getFilteredClaims();
       const shown = filtered.slice(0, visibleCount);
+      const hasMore = visibleCount < filtered.length;
+
       claimCount.textContent = String(claims.length);
-      resultsText.textContent = `Showing ${shown.length} of ${filtered.length} matches`;
+      resultsText.textContent = hasMore
+        ? `Showing ${shown.length} of ${filtered.length} matches • scroll for more`
+        : `Showing all ${filtered.length} matches`;
 
       if (!shown.length) {
         feed.innerHTML = '';
         emptyState.style.display = 'block';
+        loadMoreButton.style.display = 'none';
         return;
       }
 
       emptyState.style.display = 'none';
+
       feed.innerHTML = shown.map(item => `
         <article class="card">
           <div class="card-top">
@@ -653,6 +660,8 @@
           </div>
         </article>
       `).join('');
+
+      loadMoreButton.style.display = hasMore ? 'inline-flex' : 'none';
     }
 
     function addMoreClaims(amount = 8) {
@@ -662,7 +671,6 @@
         claims.push({ id: claims.length + 1, ...t });
       }
       saveClaims();
-      render();
     }
 
     function escapeHtml(text) {
@@ -690,18 +698,20 @@
     window.copyText = copyText;
 
     searchInput.addEventListener('input', () => {
-      visibleCount = 12;
+      visibleCount = 8;
       render();
     });
 
     categoryFilter.addEventListener('change', () => {
-      visibleCount = 12;
+      visibleCount = 8;
       render();
     });
 
     loadMoreButton.addEventListener('click', () => {
       const filtered = getFilteredClaims();
-      if (visibleCount >= filtered.length) addMoreClaims(8);
+      if (visibleCount >= filtered.length) {
+        addMoreClaims(8);
+      }
       visibleCount += 8;
       render();
     });
@@ -715,7 +725,7 @@
       newCategory.value = '';
       newClaim.value = '';
       newResponse.value = '';
-      visibleCount = Math.max(visibleCount, 12);
+      visibleCount = Math.max(visibleCount, 8);
       saveClaims();
       render();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -725,41 +735,50 @@
     copySiteButton.addEventListener('click', () => copyText('ChristianTruth.ai'));
 
     window.addEventListener('scroll', () => {
-      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 900;
+      if (scrollLock) return;
+
+      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 700;
       if (!nearBottom) return;
+
       const filtered = getFilteredClaims();
+      scrollLock = true;
+
       if (visibleCount < filtered.length) {
-        visibleCount += 6;
+        visibleCount += 8;
         render();
       } else {
-        addMoreClaims(6);
-        visibleCount += 6;
+        addMoreClaims(8);
+        visibleCount += 8;
         render();
       }
+
+      setTimeout(() => {
+        scrollLock = false;
+      }, 250);
     });
 
     render();
   </script>
+
   <!-- FLOATING EMAIL BOX -->
-<div id="email-widget">
-  <script async data-uid="33aacd08e9" src="https://christiantruth-online.kit.com/33aacd08e9/index.js"></script>
-</div>
+  <div id="email-widget">
+    <script async data-uid="33aacd08e9" src="https://christiantruth-online.kit.com/33aacd08e9/index.js"></script>
+  </div>
 
-<style>
-  #email-widget {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    width: 300px;
-    max-width: 90vw;
-  }
+  <style>
+    #email-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 300px;
+      max-width: 90vw;
+    }
 
-  /* Optional: make it look cleaner */
-  #email-widget iframe {
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  }
-</style>
+    #email-widget iframe {
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+  </style>
 </body>
 </html>
