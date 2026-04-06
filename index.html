@@ -1,845 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1623067326733757"
-     crossorigin="anonymous"></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChristianTruth.ai</title>
-  <meta name="description" content="Ask a claim. Get the truth. A fast growing database of short factual responses to religious claims." />
-  <style>
-    :root {
-      --bg: #0a0a0b;
-      --panel: #121316;
-      --panel-2: #17191d;
-      --text: #f3f4f6;
-      --muted: #a1a1aa;
-      --line: #27272a;
-      --accent: #ef4444;
-      --accent-2: #f97316;
-      --good: #22c55e;
-      --max: 980px;
-      --radius: 22px;
-      --shadow: 0 20px 50px rgba(0,0,0,.35);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(239,68,68,.12), transparent 35%),
-        radial-gradient(circle at 80% 10%, rgba(249,115,22,.09), transparent 25%),
-        var(--bg);
-      color: var(--text);
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .wrap {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(10,10,11,.78);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
-    }
-
-    .brand {
-      font-weight: 900;
-      letter-spacing: -.03em;
-      font-size: 1.05rem;
-    }
-
-    .brand span { color: var(--accent); }
-
-    .nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .pill, .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-size: .94rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: .18s ease;
-    }
-
-    .button.primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      border: none;
-      box-shadow: var(--shadow);
-    }
-
-    .pill:hover, .button:hover { transform: translateY(-1px); }
-
-    .hero {
-      padding: 56px 0 28px;
-    }
-
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 30px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(239,68,68,.12);
-      color: #fecaca;
-      font-weight: 800;
-      font-size: .8rem;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.2rem, 7vw, 4.6rem);
-      line-height: .95;
-      letter-spacing: -.05em;
-    }
-
-    .sub {
-      color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.18rem);
-      line-height: 1.6;
-      max-width: 720px;
-      margin: 16px 0 24px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .stat {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: .77rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .stat-value {
-      font-size: 1.7rem;
-      font-weight: 900;
-      letter-spacing: -.03em;
-    }
-
-    .section {
-      padding: 18px 0 26px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: -.03em;
-      margin: 0;
-    }
-
-    .section-copy {
-      color: var(--muted);
-      margin: 6px 0 0;
-      line-height: 1.5;
-    }
-
-    .toolbar {
-      display: grid;
-      grid-template-columns: 1.3fr .9fr auto;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      color: var(--text);
-      border-radius: 18px;
-      padding: 14px 16px;
-      font: inherit;
-      outline: none;
-    }
-
-    input::placeholder, textarea::placeholder { color: #71717a; }
-
-    .feed {
-      display: grid;
-      gap: 14px;
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .card-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-size: .82rem;
-      font-weight: 800;
-      color: #e4e4e7;
-    }
-
-    .badge.red {
-      background: rgba(239,68,68,.1);
-      color: #fecaca;
-      border-color: rgba(239,68,68,.2);
-    }
-
-    .label {
-      font-size: .72rem;
-      font-weight: 900;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      margin-bottom: 8px;
-    }
-
-    .claim {
-      font-size: clamp(1.06rem, 2vw, 1.26rem);
-      font-weight: 800;
-      line-height: 1.35;
-      margin-bottom: 16px;
-    }
-
-    .response {
-      color: #e4e4e7;
-      line-height: 1.7;
-      font-size: 1rem;
-    }
-
-    .expanded-wrap {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      display: none;
-    }
-
-    .expanded-wrap.open {
-      display: block;
-    }
-
-    .expanded-block {
-      margin-bottom: 16px;
-    }
-
-    .expanded-title {
-      font-size: .78rem;
-      font-weight: 900;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      margin-bottom: 8px;
-    }
-
-    .fact-list, .source-list, .tag-list {
-      margin: 0;
-      padding-left: 18px;
-      color: #e4e4e7;
-      line-height: 1.7;
-    }
-
-    .fact-list li,
-    .source-list li {
-      margin-bottom: 8px;
-    }
-
-    .tag-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag-chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: .8rem;
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--line);
-      color: #ddd;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .ghost {
-      background: transparent;
-      border: 1px solid var(--line);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .stack { display: grid; gap: 12px; }
-
-    .footer {
-      padding: 34px 0 60px;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .tiny {
-      font-size: .86rem;
-      color: var(--muted);
-    }
-
-    .empty {
-      padding: 30px;
-      text-align: center;
-      color: var(--muted);
-      background: var(--panel);
-      border-radius: 24px;
-      border: 1px dashed var(--line);
-    }
-
-    @media (max-width: 820px) {
-      .stats, .grid-2, .toolbar { grid-template-columns: 1fr; }
-      .topbar-inner { align-items: flex-start; flex-direction: column; }
-      .hero { padding-top: 30px; }
-      .hero-card { padding: 22px; }
-    }
-  </style>
-</head>
-<body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a href="#top" class="brand">Christian<span>Truth</span>.ai</a>
-      <nav class="nav">
-        <a class="pill" href="#claims">Claims</a>
-        <a class="pill" href="#submit">Submit</a>
-        <a class="pill" href="#support">Support</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero wrap">
-      <div class="hero-card">
-        <div class="eyebrow">Fast rebuttals • searchable • shareable</div>
-        <h1>Ask a claim.<br />Get the truth.</h1>
-        <p class="sub">
-          A blunt, searchable database of short factual responses to religious claims. Built to be linked in debates, shared in comments, and grown into a monster.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#claims">Start scrolling</a>
-          <button class="button ghost" id="copySiteButton" type="button">Copy site link text</button>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-label">Claims loaded</div>
-            <div class="stat-value" id="claimCount">0</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Style</div>
-            <div class="stat-value">Tiny</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Use case</div>
-            <div class="stat-value">Debate ammo</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section wrap" id="claims">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Claim Feed</h2>
-          <p class="section-copy">Search it. Scroll it. Drop the link in arguments and let the site do the talking.</p>
-        </div>
-        <div class="tiny" id="resultsText">Loading...</div>
-      </div>
-
-      <div class="toolbar">
-        <input id="searchInput" type="text" placeholder="Search claims, categories, or responses" />
-        <select id="categoryFilter">
-          <option value="all">All categories</option>
-        </select>
-        <button class="button" id="loadMoreButton" type="button">Load more</button>
-      </div>
-
-      <div class="feed" id="feed"></div>
-      <div class="empty" id="emptyState" style="display:none;">No matches. Try another search and keep swinging.</div>
-    </section>
-
-    <section class="section wrap" id="submit">
-      <div class="grid-2">
-        <div class="card">
-          <div class="label">Submit a claim</div>
-          <div class="claim">Add new ammo to the database</div>
-          <div class="stack">
-            <input id="newCategory" type="text" placeholder="Category, like Science or Contradictions" />
-            <textarea id="newClaim" rows="3" placeholder="Enter the religious claim"></textarea>
-            <textarea id="newResponse" rows="4" placeholder="Enter the short factual response"></textarea>
-            <button class="button primary" id="addClaimButton" type="button">Add claim to page</button>
-            <div class="tiny">This saves in your browser for now. Later we can hook it to a real database.</div>
-          </div>
-        </div>
-
-        <div class="stack">
-          <div class="card" id="support">
-            <div class="label">Monetization</div>
-            <div class="claim">Start simple. Capture attention first.</div>
-            <div class="response">
-              Best first money path: traffic, email signups, donation links, then a paid PDF or premium debate pack.
-            </div>
-            <div class="card-actions">
-              <a class="button" href="#">Add email signup</a>
-              <a class="button" href="#">Add donation link</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="label">Link drop line</div>
-            <div class="response" id="linkDropText">Already debunked here: ChristianTruth.ai</div>
-            <div class="card-actions">
-              <button class="button" id="copyDebateLine" type="button">Copy debate line</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="footer wrap">
-      ChristianTruth.ai • Built for fast launch • Next upgrade: real domain, analytics, email capture, donations, JSON database, and shareable claim pages.
-    </section>
-  </main>
-
-  <script>
-    const storageKey = 'christiantruth_ai_claims';
-    const feed = document.getElementById('feed');
-    const emptyState = document.getElementById('emptyState');
-    const claimCount = document.getElementById('claimCount');
-    const resultsText = document.getElementById('resultsText');
-    const searchInput = document.getElementById('searchInput');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const loadMoreButton = document.getElementById('loadMoreButton');
-    const addClaimButton = document.getElementById('addClaimButton');
-    const newCategory = document.getElementById('newCategory');
-    const newClaim = document.getElementById('newClaim');
-    const newResponse = document.getElementById('newResponse');
-    const copyDebateLine = document.getElementById('copyDebateLine');
-    const copySiteButton = document.getElementById('copySiteButton');
-
-    let claims = [];
-    let visibleCount = 8;
-    let scrollLock = false;
-
-    async function fetchClaims() {
-      try {
-        const response = await fetch('./claims.json', { cache: 'no-store' });
-        if (!response.ok) throw new Error('Could not load claims.json');
-        const data = await response.json();
-        return Array.isArray(data) ? data : [];
-      } catch (err) {
-        console.error(err);
-        return [];
-      }
-    }
-
-    function normalizeClaim(raw, index) {
-      return {
-        id: raw.id ?? index + 1,
-        category: raw.category || 'General',
-        claim: raw.claim || '',
-        shortResponse: raw.shortResponse || raw.response || '',
-        fullResponse: raw.fullResponse || raw.shortResponse || raw.response || '',
-        facts: Array.isArray(raw.facts) ? raw.facts : [],
-        sources: Array.isArray(raw.sources) ? raw.sources : [],
-        tags: Array.isArray(raw.tags) ? raw.tags : [],
-        aliases: Array.isArray(raw.aliases) ? raw.aliases : []
-      };
-    }
-
-    function getAllClaims() {
-      const local = localStorage.getItem(storageKey);
-      let userClaims = [];
-      if (local) {
-        try {
-          const parsed = JSON.parse(local);
-          if (Array.isArray(parsed)) {
-            userClaims = parsed.map((item, index) => normalizeClaim(item, index));
-          }
-        } catch (err) {}
-      }
-      return [...userClaims, ...claims];
-    }
-
-    function saveLocalClaims(localClaims) {
-      localStorage.setItem(storageKey, JSON.stringify(localClaims));
-    }
-
-    function escapeHtml(text) {
-      return String(text)
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#039;');
-    }
-
-    async function copyText(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch (err) {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-      }
-    }
-
-    window.copyText = copyText;
-
-    function refreshCategories() {
-      const current = categoryFilter.value;
-      const categories = ['all', ...new Set(getAllClaims().map(c => c.category).sort((a,b) => a.localeCompare(b)))];
-      categoryFilter.innerHTML = categories.map(cat => `<option value="${escapeHtml(cat)}">${cat === 'all' ? 'All categories' : escapeHtml(cat)}</option>`).join('');
-      if (categories.includes(current)) categoryFilter.value = current;
-      else categoryFilter.value = 'all';
-    }
-
-    function scoreClaim(item, query) {
-      if (!query) return 0;
-
-      const q = query.toLowerCase().trim();
-      const tokens = q.split(/\s+/).filter(Boolean);
-
-      const claimText = item.claim.toLowerCase();
-      const shortText = item.shortResponse.toLowerCase();
-      const fullText = item.fullResponse.toLowerCase();
-      const categoryText = item.category.toLowerCase();
-      const aliasesText = item.aliases.join(' ').toLowerCase();
-      const tagsText = item.tags.join(' ').toLowerCase();
-      const factsText = item.facts.join(' ').toLowerCase();
-      const sourcesText = item.sources.join(' ').toLowerCase();
-
-      let score = 0;
-
-      if (claimText === q) score += 500;
-      if (claimText.includes(q)) score += 180;
-      if (aliasesText.includes(q)) score += 160;
-      if (tagsText.includes(q)) score += 130;
-      if (shortText.includes(q)) score += 110;
-      if (fullText.includes(q)) score += 90;
-      if (factsText.includes(q)) score += 70;
-      if (categoryText.includes(q)) score += 50;
-      if (sourcesText.includes(q)) score += 30;
-
-      for (const token of tokens) {
-        if (claimText.includes(token)) score += 18;
-        if (aliasesText.includes(token)) score += 16;
-        if (tagsText.includes(token)) score += 14;
-        if (shortText.includes(token)) score += 12;
-        if (fullText.includes(token)) score += 10;
-        if (factsText.includes(token)) score += 8;
-        if (categoryText.includes(token)) score += 6;
-      }
-
-      return score;
-    }
-
-    function getFilteredClaims() {
-      const allClaims = getAllClaims();
-      const query = searchInput.value.trim().toLowerCase();
-      const category = categoryFilter.value;
-
-      let filtered = allClaims.filter(item => {
-        return category === 'all' || item.category === category;
-      });
-
-      if (!query) return filtered;
-
-      const ranked = filtered
-        .map(item => ({ ...item, _score: scoreClaim(item, query) }))
-        .filter(item => item._score > 0)
-        .sort((a, b) => b._score - a._score);
-
-      return ranked;
-    }
-
-    function renderFacts(facts) {
-      if (!facts.length) return '';
-      return `
-        <div class="expanded-block">
-          <div class="expanded-title">Backed up facts</div>
-          <ul class="fact-list">
-            ${facts.map(fact => `<li>${escapeHtml(fact)}</li>`).join('')}
-          </ul>
-        </div>
-      `;
-    }
-
-    function renderSources(sources) {
-      if (!sources.length) return '';
-      return `
-        <div class="expanded-block">
-          <div class="expanded-title">Sources or references</div>
-          <ul class="source-list">
-            ${sources.map(source => `<li>${escapeHtml(source)}</li>`).join('')}
-          </ul>
-        </div>
-      `;
-    }
-
-    function renderTags(tags) {
-      if (!tags.length) return '';
-      return `
-        <div class="expanded-block">
-          <div class="expanded-title">Related terms</div>
-          <div class="tag-cloud">
-            ${tags.map(tag => `<span class="tag-chip">${escapeHtml(tag)}</span>`).join('')}
-          </div>
-        </div>
-      `;
-    }
-
-    function toggleExpand(id) {
-      const wrap = document.getElementById(`expanded-${id}`);
-      const button = document.getElementById(`toggle-${id}`);
-      if (!wrap || !button) return;
-
-      const isOpen = wrap.classList.contains('open');
-      wrap.classList.toggle('open');
-      button.textContent = isOpen ? 'Show backup' : 'Hide backup';
-    }
-
-    window.toggleExpand = toggleExpand;
-
-    function render() {
-      refreshCategories();
-
-      const allClaims = getAllClaims();
-      const filtered = getFilteredClaims();
-      const shown = filtered.slice(0, visibleCount);
-      const hasMore = visibleCount < filtered.length;
-
-      claimCount.textContent = String(allClaims.length);
-      resultsText.textContent = hasMore
-        ? `Showing ${shown.length} of ${filtered.length} matches • scroll for more`
-        : `Showing all ${filtered.length} matches`;
-
-      if (!shown.length) {
-        feed.innerHTML = '';
-        emptyState.style.display = 'block';
-        loadMoreButton.style.display = 'none';
-        return;
-      }
-
-      emptyState.style.display = 'none';
-
-      feed.innerHTML = shown.map(item => `
-        <article class="card">
-          <div class="card-top">
-            <span class="badge red">${escapeHtml(item.category)}</span>
-            <span class="badge">#${item.id}</span>
-          </div>
-          <div class="label">Claim</div>
-          <div class="claim">${escapeHtml(item.claim)}</div>
-          <div class="label">Response</div>
-          <div class="response">${escapeHtml(item.shortResponse)}</div>
-
-          <div class="card-actions">
-            <button class="button ghost" id="toggle-${item.id}" type="button" onclick="toggleExpand(${JSON.stringify(item.id)})">Show backup</button>
-            <button class="button ghost" type="button" onclick="copyText(${JSON.stringify(`Claim: ${item.claim}\nResponse: ${item.shortResponse}`)})">Copy card</button>
-            <button class="button ghost" type="button" onclick="copyText(${JSON.stringify(`Already debunked here: ChristianTruth.ai\n\nClaim: ${item.claim}\nResponse: ${item.shortResponse}`)})">Copy debate reply</button>
-          </div>
-
-          <div class="expanded-wrap" id="expanded-${item.id}">
-            <div class="expanded-block">
-              <div class="expanded-title">Full backup</div>
-              <div class="response">${escapeHtml(item.fullResponse)}</div>
-            </div>
-            ${renderFacts(item.facts)}
-            ${renderSources(item.sources)}
-            ${renderTags(item.tags)}
-          </div>
-        </article>
-      `).join('');
-
-      loadMoreButton.style.display = hasMore ? 'inline-flex' : 'none';
-    }
-
-    searchInput.addEventListener('input', () => {
-      visibleCount = 8;
-      render();
-    });
-
-    categoryFilter.addEventListener('change', () => {
-      visibleCount = 8;
-      render();
-    });
-
-    loadMoreButton.addEventListener('click', () => {
-      visibleCount += 8;
-      render();
-    });
-
-    addClaimButton.addEventListener('click', () => {
-      const category = newCategory.value.trim() || 'General';
-      const claim = newClaim.value.trim();
-      const response = newResponse.value.trim();
-
-      if (!claim || !response) return;
-
-      const currentLocal = JSON.parse(localStorage.getItem(storageKey) || '[]');
-      currentLocal.unshift({
-        id: Date.now(),
-        category,
-        claim,
-        shortResponse: response,
-        fullResponse: response,
-        facts: [],
-        sources: [],
-        tags: [category.toLowerCase(), claim.toLowerCase()],
-        aliases: [claim.toLowerCase()]
-      });
-
-      saveLocalClaims(currentLocal);
-
-      newCategory.value = '';
-      newClaim.value = '';
-      newResponse.value = '';
-      visibleCount = Math.max(visibleCount, 8);
-      render();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    copyDebateLine.addEventListener('click', () => copyText('Already debunked here: ChristianTruth.ai'));
-    copySiteButton.addEventListener('click', () => copyText('ChristianTruth.ai'));
-
-    window.addEventListener('scroll', () => {
-      if (scrollLock) return;
-
-      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 700;
-      if (!nearBottom) return;
-
-      const filtered = getFilteredClaims();
-      if (visibleCount >= filtered.length) return;
-
-      scrollLock = true;
-      visibleCount += 8;
-      render();
-
-      setTimeout(() => {
-        scrollLock = false;
-      }, 250);
-    });
-
-    async function init() {
-      const loaded = await fetchClaims();
-      claims = loaded.map((item, index) => normalizeClaim(item, index));
-      render();
-    }
-
-    init();
-  </script>
-
-  <!-- FLOATING EMAIL BOX -->
-  <div id="email-widget">
-    <script async data-uid="33aacd08e9" src="https://christiantruth-online.kit.com/33aacd08e9/index.js"></script>
-  </div>
-
-  <style>
-    #email-widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      width: 300px;
-      max-width: 90vw;
-    }
-
-    #email-widget iframe {
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-  </style>
-</body>
-</html>
+<!-- ONLY showing modified JS section — everything else stays EXACTLY as you gave it -->
+
+<script>
+const storageKey = 'christiantruth_ai_claims';
+
+let claims = [];
+let visibleCount = 8;
+let scrollLock = false;
+
+/* =========================
+   🔥 NEW: PREPROCESS ENGINE
+========================= */
+function preprocessClaims(claims) {
+  const seen = new Map();
+
+  return claims.map(c => {
+    const key = c.claim.toLowerCase().trim();
+
+    if (seen.has(key)) return null;
+    seen.set(key, true);
+
+    return {
+      ...c,
+      category: c.category.toLowerCase(),
+      searchBlob: [
+        c.claim,
+        c.shortResponse,
+        c.fullResponse,
+        ...(c.tags || []),
+        ...(c.aliases || [])
+      ].join(' ').toLowerCase()
+    };
+  }).filter(Boolean);
+}
+
+/* =========================
+   🔥 QUERY EXPANSION
+========================= */
+function expandQuery(query) {
+  const map = {
+    prayer: ["prayer", "pray", "praying"],
+    god: ["god", "creator", "deity"],
+    bible: ["bible", "scripture"],
+    evolution: ["evolution", "darwin", "natural selection"],
+    miracle: ["miracle", "supernatural", "divine"]
+  };
+
+  let expanded = [query];
+
+  for (const key in map) {
+    if (query.includes(key)) {
+      expanded = expanded.concat(map[key]);
+    }
+  }
+
+  return expanded.join(' ');
+}
+
+/* =========================
+   🔥 FASTER SCORING
+========================= */
+function scoreClaim(item, query) {
+  if (!query) return 0;
+
+  let score = 0;
+
+  if (item.searchBlob.includes(query)) score += 100;
+
+  const tokens = query.split(/\s+/);
+  for (const token of tokens) {
+    if (item.searchBlob.includes(token)) score += 10;
+  }
+
+  if (item.claim.toLowerCase().includes(query)) score += 50;
+
+  return score;
+}
+
+/* =========================
+   🔥 FILTER
+========================= */
+function getFilteredClaims() {
+  const allClaims = getAllClaims();
+  const rawQuery = searchInput.value.trim().toLowerCase();
+  const query = expandQuery(rawQuery);
+  const category = categoryFilter.value;
+
+  let filtered = allClaims.filter(item => {
+    return category === 'all' || item.category === category;
+  });
+
+  if (!query) return filtered;
+
+  return filtered
+    .map(item => ({ ...item, _score: scoreClaim(item, query) }))
+    .filter(item => item._score > 0)
+    .sort((a, b) => b._score - a._score);
+}
+
+/* =========================
+   🔥 INIT
+========================= */
+async function init() {
+  const loaded = await fetchClaims();
+  claims = preprocessClaims(
+    loaded.map((item, index) => normalizeClaim(item, index))
+  );
+  render();
+}
+
+init();
+</script>
