@@ -1,4 +1,395 @@
-<!-- ONLY showing modified JS section — everything else stays EXACTLY as you gave it -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1623067326733757"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChristianTruth.ai</title>
+  <meta name="description" content="Ask a claim. Get the truth. A fast growing database of short factual responses to religious claims." />
+
+  <!-- KEEP ALL YOUR ORIGINAL CSS EXACTLY THE SAME -->
+  <style>
+    /* (unchanged - same as your file) */
+    :root {
+      --bg: #0a0a0b;
+      --panel: #121316;
+      --panel-2: #17191d;
+      --text: #f3f4f6;
+      --muted: #a1a1aa;
+      --line: #27272a;
+      --accent: #ef4444;
+      --accent-2: #f97316;
+      --good: #22c55e;
+      --max: 980px;
+      --radius: 22px;
+      --shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(239,68,68,.12), transparent 35%),
+        radial-gradient(circle at 80% 10%, rgba(249,115,22,.09), transparent 25%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(10,10,11,.78);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: -.03em;
+      font-size: 1.05rem;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: .94rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+      box-shadow: var(--shadow);
+    }
+
+    .pill:hover, .button:hover { transform: translateY(-1px); }
+
+    .hero {
+      padding: 56px 0 28px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(239,68,68,.12);
+      color: #fecaca;
+      font-weight: 800;
+      font-size: .8rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 7vw, 4.6rem);
+      line-height: .95;
+      letter-spacing: -.05em;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 16px 0 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: .77rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-size: 1.7rem;
+      font-weight: 900;
+      letter-spacing: -.03em;
+    }
+
+    .section {
+      padding: 18px 0 26px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      margin: 0;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      margin: 6px 0 0;
+      line-height: 1.5;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1.3fr .9fr auto;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font: inherit;
+      outline: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: #71717a; }
+
+    .feed {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 800;
+      color: #e4e4e7;
+    }
+
+    .badge.red {
+      background: rgba(239,68,68,.1);
+      color: #fecaca;
+      border-color: rgba(239,68,68,.2);
+    }
+
+    .label {
+      font-size: .72rem;
+      font-weight: 900;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      margin-bottom: 8px;
+    }
+
+    .claim {
+      font-size: clamp(1.06rem, 2vw, 1.26rem);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+
+    .response {
+      color: #e4e4e7;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .expanded-wrap {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      display: none;
+    }
+
+    .expanded-wrap.open {
+      display: block;
+    }
+
+    .expanded-block {
+      margin-bottom: 16px;
+    }
+
+    .expanded-title {
+      font-size: .78rem;
+      font-weight: 900;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin-bottom: 8px;
+    }
+
+    .fact-list, .source-list, .tag-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #e4e4e7;
+      line-height: 1.7;
+    }
+
+    .fact-list li,
+    .source-list li {
+      margin-bottom: 8px;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .8rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      color: #ddd;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .ghost {
+      background: transparent;
+      border: 1px solid var(--line);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stack { display: grid; gap: 12px; }
+
+    .footer {
+      padding: 34px 0 60px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .tiny {
+      font-size: .86rem;
+      color: var(--muted);
+    }
+
+    .empty {
+      padding: 30px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--panel);
+      border-radius: 24px;
+      border: 1px dashed var(--line);
+    }
+
+    @media (max-width: 820px) {
+      .stats, .grid-2, .toolbar { grid-template-columns: 1fr; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .hero { padding-top: 30px; }
+      .hero-card { padding: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- KEEP YOUR HTML EXACTLY THE SAME ABOVE THIS POINT -->
 
 <script>
 const storageKey = 'christiantruth_ai_claims';
@@ -7,15 +398,12 @@ let claims = [];
 let visibleCount = 8;
 let scrollLock = false;
 
-/* =========================
-   🔥 NEW: PREPROCESS ENGINE
-========================= */
+/* ===== PREPROCESS ===== */
 function preprocessClaims(claims) {
   const seen = new Map();
 
   return claims.map(c => {
     const key = c.claim.toLowerCase().trim();
-
     if (seen.has(key)) return null;
     seen.set(key, true);
 
@@ -33,32 +421,26 @@ function preprocessClaims(claims) {
   }).filter(Boolean);
 }
 
-/* =========================
-   🔥 QUERY EXPANSION
-========================= */
+/* ===== QUERY EXPANSION ===== */
 function expandQuery(query) {
   const map = {
-    prayer: ["prayer", "pray", "praying"],
-    god: ["god", "creator", "deity"],
-    bible: ["bible", "scripture"],
-    evolution: ["evolution", "darwin", "natural selection"],
-    miracle: ["miracle", "supernatural", "divine"]
+    prayer: ["prayer","pray","praying"],
+    god: ["god","deity","creator"],
+    bible: ["bible","scripture"],
+    evolution: ["evolution","darwin"],
+    miracle: ["miracle","supernatural"]
   };
 
   let expanded = [query];
 
   for (const key in map) {
-    if (query.includes(key)) {
-      expanded = expanded.concat(map[key]);
-    }
+    if (query.includes(key)) expanded = expanded.concat(map[key]);
   }
 
   return expanded.join(' ');
 }
 
-/* =========================
-   🔥 FASTER SCORING
-========================= */
+/* ===== SCORE ===== */
 function scoreClaim(item, query) {
   if (!query) return 0;
 
@@ -76,37 +458,37 @@ function scoreClaim(item, query) {
   return score;
 }
 
-/* =========================
-   🔥 FILTER
-========================= */
-function getFilteredClaims() {
-  const allClaims = getAllClaims();
-  const rawQuery = searchInput.value.trim().toLowerCase();
-  const query = expandQuery(rawQuery);
-  const category = categoryFilter.value;
-
-  let filtered = allClaims.filter(item => {
-    return category === 'all' || item.category === category;
-  });
-
-  if (!query) return filtered;
-
-  return filtered
-    .map(item => ({ ...item, _score: scoreClaim(item, query) }))
-    .filter(item => item._score > 0)
-    .sort((a, b) => b._score - a._score);
-}
-
-/* =========================
-   🔥 INIT
-========================= */
+/* ===== INIT ===== */
 async function init() {
-  const loaded = await fetchClaims();
-  claims = preprocessClaims(
-    loaded.map((item, index) => normalizeClaim(item, index))
-  );
+  const response = await fetch('./claims.json');
+  const data = await response.json();
+
+  claims = preprocessClaims(data);
   render();
 }
 
 init();
 </script>
+
+<!-- KEEP YOUR EMAIL + ADSENSE EXACTLY -->
+<div id="email-widget">
+  <script async data-uid="33aacd08e9" src="https://christiantruth-online.kit.com/33aacd08e9/index.js"></script>
+</div>
+
+<style>
+#email-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 300px;
+  max-width: 90vw;
+}
+#email-widget iframe {
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+</style>
+
+</body>
+</html>
