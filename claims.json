@@ -1,0 +1,374 @@
+[
+  {
+    "id": 1,
+    "category": "Science",
+    "claim": "The Bible says the Earth is flat.",
+    "shortResponse": "No. Earth is measurably round through satellites, gravity, circumnavigation, and direct observation.",
+    "fullResponse": "Flat Earth readings usually come from poetic or symbolic passages, not scientific description. Modern astronomy, satellite imagery, gravity, time zones, and circumnavigation all match a globe, not a flat plane.",
+    "facts": [
+      "Satellites directly image Earth as a sphere",
+      "Ships disappear hull first over the horizon",
+      "Time zones only make sense on a rotating globe",
+      "Gravity pulls toward a center of mass"
+    ],
+    "sources": [
+      "NASA Earth observation imagery",
+      "Basic astronomy and physics"
+    ],
+    "tags": ["flat earth", "earth shape", "bible science", "globe", "astronomy"],
+    "aliases": ["the bible teaches flat earth", "scripture says the earth is flat", "flat earth in the bible"]
+  },
+  {
+    "id": 2,
+    "category": "Medicine",
+    "claim": "Prayer has been proven to heal illness.",
+    "shortResponse": "No. Controlled studies do not show consistent healing effects beyond placebo, bias, or normal recovery.",
+    "fullResponse": "People often remember the apparent hits and forget the misses. That is classic selection bias. Controlled research has not shown a reliable healing effect that separates prayer from placebo, spontaneous improvement, or standard medical care.",
+    "facts": [
+      "Anecdotes are not the same as controlled evidence",
+      "People often improve naturally over time",
+      "Selection bias makes answered prayers feel more common than they are",
+      "Controlled trials have not shown consistent supernatural healing effects"
+    ],
+    "sources": [
+      "Clinical trial methodology",
+      "Placebo and outcome bias research"
+    ],
+    "tags": ["prayer", "healing", "miracle healing", "medicine", "placebo"],
+    "aliases": ["prayer heals people", "prayer cures disease", "prayer proven to work"]
+  },
+  {
+    "id": 3,
+    "category": "Evolution",
+    "claim": "Humans were created exactly as they are now.",
+    "shortResponse": "No. Genetics, fossils, and comparative anatomy show humans evolved over time from earlier life forms.",
+    "fullResponse": "Human anatomy, the fossil record, shared DNA, and observed evolutionary mechanisms all point to common ancestry. The evidence does not fit the idea that humans appeared suddenly in their current form.",
+    "facts": [
+      "Humans share large amounts of DNA with other primates",
+      "The fossil record shows transitional hominin forms",
+      "Comparative anatomy shows shared structures across species",
+      "Evolution is supported by genetics, fossils, and observed adaptation"
+    ],
+    "sources": [
+      "Genetics",
+      "Paleoanthropology",
+      "Comparative anatomy"
+    ],
+    "tags": ["evolution", "human origins", "genetics", "fossils", "common ancestry"],
+    "aliases": ["humans were made as is", "god created humans exactly as they are", "no human evolution"]
+  },
+  {
+    "id": 4,
+    "category": "History",
+    "claim": "A global flood covered the whole Earth.",
+    "shortResponse": "No. There is no worldwide flood layer or global geological timeline matching that story.",
+    "fullResponse": "A true global flood would leave unmistakable worldwide evidence in geology, archaeology, and biodiversity. Instead, the evidence points to many local floods in human history, not one recent flood covering the entire planet.",
+    "facts": [
+      "No single global sediment layer matches a worldwide flood",
+      "Human civilizations continued in ways that do not fit total global destruction",
+      "Modern biodiversity does not fit a recent boat bottleneck for all land animals",
+      "Geology shows layered processes over vast spans of time"
+    ],
+    "sources": [
+      "Geology",
+      "Archaeology",
+      "Biogeography"
+    ],
+    "tags": ["noah", "global flood", "ark", "geology", "flood myth"],
+    "aliases": ["the whole world flooded", "noahs flood covered earth", "global deluge"]
+  },
+  {
+    "id": 5,
+    "category": "Logic",
+    "claim": "Everything complex needs a creator, so God must exist.",
+    "shortResponse": "No. That just pushes the problem back one step. If complexity requires a creator, a complex god would need one too.",
+    "fullResponse": "This argument treats complexity as proof of design, but it never explains why the rule stops at God. If the rule applies to everything complex, then a complex deity would also need an explanation.",
+    "facts": [
+      "The argument special cases God without justification",
+      "It does not explain why the causal chain stops where believers want it to stop",
+      "Natural complexity can arise from simple rules over time"
+    ],
+    "sources": [
+      "Basic logic",
+      "Philosophy of religion"
+    ],
+    "tags": ["first cause", "creator", "design argument", "logic", "complexity"],
+    "aliases": ["everything needs a creator", "complexity proves god", "design means god"]
+  },
+  {
+    "id": 6,
+    "category": "Textual",
+    "claim": "The Bible is perfectly consistent.",
+    "shortResponse": "No. It contains internal contradictions in chronology, numbers, genealogy, and parallel stories.",
+    "fullResponse": "The Bible is a library of texts written across centuries by different authors with different goals and perspectives. That naturally produces internal tensions and contradictions, not perfect uniformity.",
+    "facts": [
+      "Different books sometimes give different numbers for the same event",
+      "Genealogies differ across texts",
+      "Parallel accounts often disagree in details",
+      "Different authors wrote in different eras with different aims"
+    ],
+    "sources": [
+      "Textual criticism",
+      "Comparative reading of biblical passages"
+    ],
+    "tags": ["contradictions", "inerrancy", "bible errors", "textual criticism"],
+    "aliases": ["the bible has no contradictions", "scripture is perfectly consistent", "bible inerrant"]
+  },
+  {
+    "id": 7,
+    "category": "Astronomy",
+    "claim": "The sun stood still, so scripture is scientifically accurate.",
+    "shortResponse": "No. That story reads like miracle literature, not a physics model.",
+    "fullResponse": "Ancient writers described the sky from human perspective, just like people still say the sun rises today. That does not make the text a modern scientific explanation of planetary motion.",
+    "facts": [
+      "Ancient sky language is observational, not technical astronomy",
+      "People still use phrases like sunrise without endorsing geocentrism",
+      "Narrative miracle language is not a physics textbook"
+    ],
+    "sources": [
+      "History of astronomy",
+      "Ancient literary conventions"
+    ],
+    "tags": ["sun stood still", "joshua", "astronomy", "miracle"],
+    "aliases": ["the sun stopped in the bible", "joshua proves science", "sun stood still proves scripture"]
+  },
+  {
+    "id": 8,
+    "category": "Morality",
+    "claim": "You cannot have morality without God.",
+    "shortResponse": "No. Humans had empathy, reciprocity, and social rules long before agreement on any single god claim.",
+    "fullResponse": "Moral behavior grows out of social living, empathy, cooperation, and consequences. People can reason about harm, fairness, and wellbeing without grounding morality in a deity.",
+    "facts": [
+      "Humans are social animals with built in cooperative instincts",
+      "Secular moral systems can evaluate harm and wellbeing",
+      "Different religions disagree on moral rules anyway"
+    ],
+    "sources": [
+      "Ethics",
+      "Evolutionary psychology",
+      "Moral philosophy"
+    ],
+    "tags": ["morality", "ethics", "god and morality", "good without god"],
+    "aliases": ["no morality without god", "atheists cant be moral", "god is needed for ethics"]
+  },
+  {
+    "id": 9,
+    "category": "Archaeology",
+    "claim": "Exodus happened exactly as written.",
+    "shortResponse": "No. Mainstream archaeology has not found evidence for the mass desert migration at the biblical scale.",
+    "fullResponse": "Large events leave trails. A migration of that claimed size should have produced broad archaeological evidence across routes, camps, material remains, and settlement disruption. That evidence has not appeared in the expected way.",
+    "facts": [
+      "Archaeology has not confirmed the event at the stated scale",
+      "Large population movements usually leave material evidence",
+      "The biblical conquest timeline also faces archaeological problems"
+    ],
+    "sources": [
+      "Near Eastern archaeology",
+      "Settlement pattern studies"
+    ],
+    "tags": ["exodus", "moses", "archaeology", "egypt", "desert migration"],
+    "aliases": ["exodus proven", "moses led millions out of egypt", "exodus happened exactly as written"]
+  },
+  {
+    "id": 10,
+    "category": "Biology",
+    "claim": "Life is too complex to arise naturally.",
+    "shortResponse": "No. Chemistry produces complexity all the time, and evolution explains how complexity can accumulate.",
+    "fullResponse": "Complexity does not require a sudden designer. Small chemical steps, self organization, selection, and long time spans can build complexity gradually from simpler starting points.",
+    "facts": [
+      "Complex patterns can emerge from simple rules",
+      "Evolution explains cumulative biological complexity",
+      "Abiogenesis research studies how nonliving chemistry can become life like"
+    ],
+    "sources": [
+      "Biology",
+      "Chemistry",
+      "Origin of life research"
+    ],
+    "tags": ["abiogenesis", "complexity", "life origins", "evolution", "biology"],
+    "aliases": ["life too complex for chance", "complex life needs god", "life cannot arise naturally"]
+  },
+  {
+    "id": 11,
+    "category": "Prayer",
+    "claim": "Answered prayers prove God is real.",
+    "shortResponse": "No. Coincidence, bias, memory distortion, and unanswered prayers explain that better than proof of the supernatural.",
+    "fullResponse": "People tend to count the apparent hits and ignore the misses. That creates a powerful emotional impression, but it is not strong evidence. To prove causation, you need something more than selective memory and personal meaning.",
+    "facts": [
+      "Humans remember meaningful coincidences strongly",
+      "Unanswered prayers are often explained away after the fact",
+      "Anecdotal success does not establish supernatural causation"
+    ],
+    "sources": [
+      "Cognitive bias research",
+      "Probability",
+      "Philosophy of evidence"
+    ],
+    "tags": ["answered prayer", "god proof", "anecdote", "bias"],
+    "aliases": ["answered prayers prove god", "god answered my prayer so god exists", "prayer answers are proof"]
+  },
+  {
+    "id": 12,
+    "category": "Contradiction",
+    "claim": "Faith is a reliable path to truth.",
+    "shortResponse": "No. Different religions use faith to reach incompatible conclusions, so faith cannot reliably sort truth from error.",
+    "fullResponse": "If one method supports mutually contradictory beliefs across different traditions, then that method is weak as a truth detector. Faith may strengthen commitment, but it is not a reliable filter for what is actually true.",
+    "facts": [
+      "Christians, Muslims, Hindus, and others all appeal to faith",
+      "These faith based conclusions often conflict with one another",
+      "A method that validates contradictions is not reliably truth tracking"
+    ],
+    "sources": [
+      "Comparative religion",
+      "Epistemology"
+    ],
+    "tags": ["faith", "truth", "epistemology", "religion comparison"],
+    "aliases": ["faith is a path to truth", "faith proves truth", "just have faith"]
+  },
+  {
+    "id": 13,
+    "category": "Miracles",
+    "claim": "Miracles prove divine intervention.",
+    "shortResponse": "No. A miracle claim is not evidence by itself. Extraordinary claims need strong independent verification.",
+    "fullResponse": "Miracle stories are common across many religions and eras. The fact that people tell miracle stories does not establish that a supernatural event really occurred, much less that one specific religion is true.",
+    "facts": [
+      "Miracle reports exist in many competing religions",
+      "A claim alone does not establish a fact",
+      "Extraordinary claims require stronger evidence than ordinary claims"
+    ],
+    "sources": [
+      "Philosophy of evidence",
+      "Comparative religion"
+    ],
+    "tags": ["miracle", "divine intervention", "proof", "supernatural"],
+    "aliases": ["miracles prove god", "miracle means divine intervention", "supernatural healing proves god"]
+  },
+  {
+    "id": 14,
+    "category": "Textual",
+    "claim": "Scripture cannot contain error because it is inspired.",
+    "shortResponse": "No. Inspiration is a belief about the text, not proof that the text is error free.",
+    "fullResponse": "Calling a book inspired does not automatically settle whether its claims are historically or scientifically correct. That conclusion has to be demonstrated, not assumed from the start.",
+    "facts": [
+      "Claiming inspiration does not remove the need for evidence",
+      "Different religions claim inspiration for different texts",
+      "Belief about origin is not the same as proof of accuracy"
+    ],
+    "sources": [
+      "Logic",
+      "Comparative religion"
+    ],
+    "tags": ["inspiration", "inerrancy", "scripture", "authority"],
+    "aliases": ["because it is inspired it has no errors", "scripture is inspired so perfect", "inspired bible means no mistakes"]
+  },
+  {
+    "id": 15,
+    "category": "Science",
+    "claim": "Creationism explains biology better than evolution.",
+    "shortResponse": "No. Evolution makes testable predictions and is supported by genetics, fossils, and observed adaptation.",
+    "fullResponse": "A strong explanation predicts what researchers should find. Evolution does that across many fields. Creationism usually starts with a conclusion and works backward from it.",
+    "facts": [
+      "Evolution predicted nested patterns of relatedness before modern genetics confirmed them",
+      "Fossils and DNA independently support common ancestry",
+      "Observed adaptation and speciation support evolutionary mechanisms"
+    ],
+    "sources": [
+      "Evolutionary biology",
+      "Genetics",
+      "Paleontology"
+    ],
+    "tags": ["creationism", "evolution", "biology", "common ancestry"],
+    "aliases": ["creationism better than evolution", "evolution is wrong biology", "creation explains life better"]
+  },
+  {
+    "id": 16,
+    "category": "History",
+    "claim": "Martyrdom proves the religion is true.",
+    "shortResponse": "No. People die for false beliefs all the time. Sincerity is not the same as truth.",
+    "fullResponse": "A martyr may prove devotion, courage, or conviction, but not correctness. Many conflicting religions and ideologies have martyrs. They cannot all be true because their followers died sincerely.",
+    "facts": [
+      "People can be deeply sincere and still wrong",
+      "Many non Christian groups also have martyrs",
+      "Dying for a claim does not verify the claim"
+    ],
+    "sources": [
+      "History of religion",
+      "Logic"
+    ],
+    "tags": ["martyr", "martyrdom", "truth", "history"],
+    "aliases": ["martyrs prove christianity", "people died for it so it is true", "martyrdom means truth"]
+  },
+  {
+    "id": 17,
+    "category": "Philosophy",
+    "claim": "God is the best explanation for existence.",
+    "shortResponse": "No. It is only an assertion unless it explains more with fewer assumptions than natural explanations.",
+    "fullResponse": "Saying God explains everything can sound satisfying, but explanation quality matters. A good explanation should clarify rather than multiply mysteries. Adding a god can just relocate the unanswered question.",
+    "facts": [
+      "An explanation should reduce mystery, not just rename it",
+      "Adding an unconstrained supernatural mind can increase assumptions",
+      "Natural explanations can often explain more with fewer moving parts"
+    ],
+    "sources": [
+      "Philosophy",
+      "Occam style reasoning"
+    ],
+    "tags": ["existence", "god explanation", "philosophy", "first cause"],
+    "aliases": ["god best explains existence", "existence proves god", "why is there something rather than nothing god"]
+  },
+  {
+    "id": 18,
+    "category": "Society",
+    "claim": "Without religion society would collapse.",
+    "shortResponse": "No. Highly secular societies function just fine with law, empathy, cooperation, and institutions.",
+    "fullResponse": "Religious belief is not the only thing holding human behavior together. Stable institutions, social trust, education, incentives, and shared norms all play major roles in how societies function.",
+    "facts": [
+      "Many secular populations maintain low crime and high social stability",
+      "Laws and institutions shape behavior whether people are religious or not",
+      "Social cooperation predates modern organized religion"
+    ],
+    "sources": [
+      "Sociology",
+      "Political science",
+      "Comparative society data"
+    ],
+    "tags": ["society", "religion needed", "secular society", "order"],
+    "aliases": ["without religion society collapses", "atheist society would fail", "religion is needed for civilization"]
+  },
+  {
+    "id": 19,
+    "category": "Bible",
+    "claim": "The Bible predicted modern science.",
+    "shortResponse": "No. Believers usually retrofit vague verses after discoveries are already known.",
+    "fullResponse": "A real scientific prediction should be clear enough in advance to distinguish itself from guesswork. Most so called biblical science predictions depend on vague wording and hindsight interpretation after the fact.",
+    "facts": [
+      "Prediction should be specific before discovery, not vague after it",
+      "Many verses are poetic and highly interpretable",
+      "Retrofit reading is common in apologetics"
+    ],
+    "sources": [
+      "Philosophy of science",
+      "Hermeneutics"
+    ],
+    "tags": ["science in bible", "prediction", "prophecy", "hindsight"],
+    "aliases": ["bible predicted science", "scripture knew modern science", "science was in the bible first"]
+  },
+  {
+    "id": 20,
+    "category": "Justice",
+    "claim": "Hell is perfectly just.",
+    "shortResponse": "No. Infinite punishment for finite wrongdoing is wildly disproportionate by ordinary moral standards.",
+    "fullResponse": "Calling endless punishment just creates a major moral tension. Most people reject never ending torture for limited offenses in every other moral setting. The claim only survives by changing the rules when religion enters the picture.",
+    "facts": [
+      "Infinite punishment for finite acts is disproportionate",
+      "Most human legal systems reject endless torture as justice",
+      "The claim depends on special pleading about divine authority"
+    ],
+    "sources": [
+      "Moral philosophy",
+      "Justice theory"
+    ],
+    "tags": ["hell", "eternal punishment", "justice", "morality"],
+    "aliases": ["hell is just", "eternal punishment is fair", "god sending people to hell is just"]
+  }
+]
