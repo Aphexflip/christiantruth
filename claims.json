@@ -302,4 +302,154 @@
     "tags": ["big bang"],
     "aliases": ["big bang fake", "big bang guess", "big bang not proven"]
   }
+  {
+    "id": 21,
+    "category": "morality",
+    "claim": "Without God people would just kill and steal",
+    "shortResponse": "No. Most people behave morally without religion.",
+    "fullResponse": "Human behavior is shaped by empathy, laws, and social consequences, not just religion.",
+    "facts": [
+      "Secular societies have low crime rates",
+      "Empathy is biological",
+      "Laws regulate behavior"
+    ],
+    "sources": ["Sociology"],
+    "tags": ["morality"],
+    "aliases": ["no god chaos", "atheists would kill", "religion prevents crime"]
+  },
+  {
+    "id": 22,
+    "category": "philosophy",
+    "claim": "God is outside time so logic does not apply",
+    "shortResponse": "No. That is a way to avoid explaining contradictions.",
+    "fullResponse": "If logic does not apply, then claims about God cannot be meaningfully evaluated.",
+    "facts": [
+      "Special pleading fallacy",
+      "Claims must be testable to be meaningful",
+      "Logic is required for any argument"
+    ],
+    "sources": ["Philosophy"],
+    "tags": ["logic"],
+    "aliases": ["god beyond logic", "god outside time argument", "logic doesnt apply to god"]
+  },
+  {
+    "id": 23,
+    "category": "miracles",
+    "claim": "People speaking in tongues is supernatural",
+    "shortResponse": "No. It is a known psychological phenomenon.",
+    "fullResponse": "Glossolalia is studied and occurs across cultures without supernatural cause.",
+    "facts": [
+      "Occurs in multiple religions",
+      "No known language structure",
+      "Brain activity matches learned behavior"
+    ],
+    "sources": ["Psychology"],
+    "tags": ["tongues"],
+    "aliases": ["speaking in tongues real", "holy spirit tongues", "glossolalia supernatural"]
+  },
+  {
+    "id": 24,
+    "category": "science",
+    "claim": "There are no transitional fossils",
+    "shortResponse": "No. Thousands exist.",
+    "fullResponse": "Fossil records clearly show transitional species between major groups.",
+    "facts": [
+      "Tiktaalik shows fish to land transition",
+      "Archaeopteryx shows dinosaur to bird",
+      "Many hominin fossils exist"
+    ],
+    "sources": ["Paleontology"],
+    "tags": ["fossils"],
+    "aliases": ["missing link", "no transitional fossils", "evolution gaps"]
+  },
+  {
+    "id": 25,
+    "category": "contradictions",
+    "claim": "God is perfectly just and loving",
+    "shortResponse": "No. Eternal punishment contradicts that.",
+    "fullResponse": "Infinite punishment for finite actions is not consistent with justice or love.",
+    "facts": [
+      "Infinite punishment is disproportionate",
+      "Hell doctrine conflicts with mercy",
+      "Moral inconsistency"
+    ],
+    "sources": ["Philosophy"],
+    "tags": ["hell"],
+    "aliases": ["hell is fair", "god just and loving", "eternal hell justified"]
+  },
+  {
+    "id": 26,
+    "category": "science",
+    "claim": "Abiogenesis has been disproven",
+    "shortResponse": "No. It is still actively studied.",
+    "fullResponse": "Abiogenesis research continues and has not been disproven.",
+    "facts": [
+      "Lab experiments show organic molecules forming",
+      "Research ongoing",
+      "No evidence against possibility"
+    ],
+    "sources": ["Biochemistry"],
+    "tags": ["abiogenesis"],
+    "aliases": ["life cannot start naturally", "abiogenesis impossible", "origin of life disproven"]
+  },
+  {
+    "id": 27,
+    "category": "history",
+    "claim": "The Bible is historically verified",
+    "shortResponse": "No. Many claims lack evidence.",
+    "fullResponse": "Some locations exist, but major events lack confirmation.",
+    "facts": [
+      "Exodus unsupported",
+      "Flood unsupported",
+      "Timeline issues"
+    ],
+    "sources": ["Archaeology"],
+    "tags": ["history"],
+    "aliases": ["bible proven history", "bible historically accurate", "scripture verified"]
+  },
+  {
+    "id": 28,
+    "category": "morality",
+    "claim": "Atheism leads to immoral societies",
+    "shortResponse": "No. Data shows the opposite.",
+    "fullResponse": "Highly secular countries often rank highest in quality of life and safety.",
+    "facts": [
+      "Low crime in secular countries",
+      "High education and wellbeing",
+      "Religion not required for stability"
+    ],
+    "sources": ["Global data"],
+    "tags": ["atheism"],
+    "aliases": ["atheism bad society", "atheists dangerous", "religion needed society"]
+  },
+  {
+    "id": 29,
+    "category": "science",
+    "claim": "The Earth was specially designed for humans",
+    "shortResponse": "No. Humans adapted to Earth.",
+    "fullResponse": "Life evolves to fit environments, not the other way around.",
+    "facts": [
+      "Extreme environments exist",
+      "Humans survive in narrow conditions",
+      "Evolution explains adaptation"
+    ],
+    "sources": ["Biology"],
+    "tags": ["design"],
+    "aliases": ["earth made for humans", "fine tuned earth humans", "earth perfect for life"]
+  },
+  {
+    "id": 30,
+    "category": "philosophy",
+    "claim": "You cannot prove God does not exist",
+    "shortResponse": "No. The burden of proof is on the claim.",
+    "fullResponse": "Lack of disproof is not evidence. The person making the claim must provide evidence.",
+    "facts": [
+      "Burden of proof principle",
+      "Infinite unfalsifiable claims exist",
+      "Non disproof is not proof"
+    ],
+    "sources": ["Logic"],
+    "tags": ["proof"],
+    "aliases": ["prove god doesnt exist", "atheists must prove no god", "no proof against god"]
+  }
 ]
