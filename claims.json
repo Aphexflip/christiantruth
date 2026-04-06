@@ -273,20 +273,20 @@
     "aliases": ["humans not animals", "humans separate creation", "special humans"]
   },
   {
-    "id": 19,
-    "category": "contradictions",
-    "claim": "God is all knowing and never changes",
-    "shortResponse": "No. The Bible shows God changing decisions.",
-    "fullResponse": "God is described as regretting actions and changing plans, contradicting immutability.",
-    "facts": [
-      "God regrets creating humans",
-      "Changes decisions after prayer",
-      "Inconsistent behavior"
-    ],
-    "sources": ["Bible"],
-    "tags": ["god"],
-    "aliases": ["god never changes", "immutable god", "god consistent always"]
-  },
+  "id": 19,
+  "category": "contradictions",
+  "claim": "God is all knowing and never changes",
+  "shortResponse": "No. The Bible shows God changing decisions.",
+  "fullResponse": "God is described as regretting actions and changing plans, contradicting immutability.",
+  "facts": [
+    "God regrets creating humans in Genesis",
+    "Changes mind after Moses intervenes",
+    "Responds differently based on human actions"
+  ],
+  "sources": ["Bible"],
+  "tags": ["god"],
+  "aliases": ["god never changes", "immutable god", "god all knowing unchanging"]
+}
   {
     "id": 20,
     "category": "science",
