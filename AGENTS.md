@@ -5,6 +5,17 @@ Build a fast, searchable, source-backed site that audits religious claims using 
 
 The site may criticize religions, doctrines, scriptures, historical institutions, apologetic arguments, skeptical arguments, and political uses of religion. Do not target or demean people merely for belonging to a religion. Attack propositions and institutions, not protected classes of people.
 
+## Homepage priority
+The claim-audit database is the primary product and must remain above the fold. On an empty search, rank the feed by **Damning Score** so the highest-consequence evidence appears first.
+
+Damning Score is an editorial 1–10 ranking of how strongly an audited claim challenges religious truth claims or moral authority. It should consider:
+1. Severity of the implication.
+2. Directness of the primary text or underlying evidence.
+3. Evidential clarity / confidence.
+4. Centrality to the religion's doctrine, history, or moral authority.
+
+Do not present Damning Score as a scientific measurement. Keep evidence confidence separate from impact severity. Searching should prioritize query relevance first, using Damning Score as a secondary ranking signal.
+
 ## Editorial standard
 Every important audit should include:
 1. The exact claim.
@@ -26,11 +37,12 @@ Do not manufacture certainty. Distinguish:
 Correct weak skeptical arguments as aggressively as weak religious arguments. Credibility is a product feature.
 
 ## Architecture
-- `index.html` — homepage and searchable audit feed.
+- `index.html` — homepage and ranked/searchable audit feed.
 - `data/claims.json` — canonical current claim database.
-- `app.js` — homepage search/filter/render behavior.
+- `app.js` — homepage search/filter/ranking/render behavior, including Damning Score.
 - `claim.html` + `claim.js` — permanent per-claim pages.
-- `_redirects` — pretty `/claim/<slug>` routing.
+- `vercel.json` — Vercel pretty `/claim/<slug>` routing.
+- `_redirects` — compatibility routing for hosts that support it.
 - `research/` — long-form evidence-first investigations.
 - `styles.css` — shared visual system.
 - Legacy root `claims.json` is not canonical and should not be used by new UI until intentionally migrated.
