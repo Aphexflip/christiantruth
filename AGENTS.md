@@ -5,8 +5,32 @@ Build a fast, searchable, source-backed site that audits religious claims using 
 
 The site may criticize religions, doctrines, scriptures, historical institutions, apologetic arguments, skeptical arguments, and political uses of religion. Do not target or demean people merely for belonging to a religion. Attack propositions and institutions, not protected classes of people.
 
+## Product identity
+The public experience should feel ominous, confrontational, dark, and memorable: an obsidian / blood-red evidence archive rather than a conventional blog. The atmosphere may be aggressive; the factual standard may not be.
+
+Keep the visual language consistent with the current **Black Index / case-file / evidence-archive** direction unless intentionally redesigned:
+- near-black surfaces;
+- blood-red hierarchy and glows;
+- severe condensed display typography;
+- scanline / classified-file / warning treatments;
+- restrained motion;
+- excellent readability beneath the theatrical layer.
+
+Do not let decorative horror styling interfere with accessibility, source legibility, mobile usability, or credibility.
+
 ## Homepage priority
 The claim-audit database is the primary product and must remain above the fold. On an empty search, rank the feed by **Damning Score** so the highest-consequence evidence appears first.
+
+Each claim card must open **inline in the feed first**. Do not make navigation to a standalone page the primary click behavior. Clicking the card opens a case dossier below it containing:
+1. strongest reasonable defense / steelman;
+2. core evidence audit;
+3. apologetic defense tree with common follow-up arguments;
+4. evidence response to each branch;
+5. an "if they pivot" next-step response;
+6. evidence bullets and sources;
+7. secondary actions for copy/share/permanent standalone page.
+
+Only one inline dossier should normally be open at a time to preserve the rapid-scroll experience.
 
 Damning Score is an editorial 1–10 ranking of how strongly an audited claim challenges religious truth claims or moral authority. It should consider:
 1. Severity of the implication.
@@ -26,6 +50,9 @@ Every important audit should include:
 6. Concrete evidence bullets.
 7. Primary or high-quality secondary sources.
 8. Search aliases using language people actually type or say.
+9. For high-priority claims, multiple rebuttal-tree branches representing real apologetic responses rather than invented weak arguments.
+
+Defense-tree replies must steelman the real argument. Never fabricate foolish or deliberately weak Christian responses just to make rebuttal easy. Where a defense is genuinely strong or leaves uncertainty, say so.
 
 Do not manufacture certainty. Distinguish:
 - what a text says;
@@ -37,14 +64,15 @@ Do not manufacture certainty. Distinguish:
 Correct weak skeptical arguments as aggressively as weak religious arguments. Credibility is a product feature.
 
 ## Architecture
-- `index.html` — homepage and ranked/searchable audit feed.
+- `index.html` — homepage and ranked/searchable inline audit feed.
 - `data/claims.json` — canonical current claim database.
-- `app.js` — homepage search/filter/ranking/render behavior, including Damning Score.
-- `claim.html` + `claim.js` — permanent per-claim pages.
+- `data/rebuttal-trees.json` — canonical mapped apologetic defenses and response branches for high-priority claims.
+- `app.js` — homepage search/filter/ranking/render/inline-dossier behavior, including Damning Score.
+- `claim.html` + `claim.js` — secondary permanent per-claim pages, including available defense trees.
 - `vercel.json` — Vercel pretty `/claim/<slug>` routing.
 - `_redirects` — compatibility routing for hosts that support it.
 - `research/` — long-form evidence-first investigations.
-- `styles.css` — shared visual system.
+- `styles.css` — shared Black Index visual system.
 - Legacy root `claims.json` is not canonical and should not be used by new UI until intentionally migrated.
 
 ## Preserve
@@ -55,7 +83,7 @@ Do not remove or replace without explicit reason:
 
 ## Product rules
 - Never generate fake duplicate claims to simulate infinite scroll.
-- Prefer permanent shareable claim URLs.
+- Prefer permanent shareable claim URLs as a secondary action.
 - Search should match common paraphrases and aliases.
 - Prefer sources users can open directly.
 - Use primary sources, peer-reviewed work, major academic references, universities, museums, government science agencies, and reputable scholarly resources where possible.
