@@ -1,10 +1,10 @@
 const DATA_URL='/data/claims.json';
+const TREE_URL='/data/rebuttal-trees.json';
 const PAGE_SIZE=10;
 const STATUS_LABELS={unsupported:'Unsupported',misleading:'Misleading',complex:'More complicated',supported:'Supported'};
 const CONFIDENCE_WEIGHT={high:3,medium:2,low:1};
 
-// Editorial ranking: consequence to a religious truth/moral-authority claim if the audit holds.
-// This is intentionally separate from evidence confidence.
+// Editorial consequence ranking. This is deliberately separate from evidence confidence.
 const DAMNING_RULES=[
   {re:/slavery|slave|human ownership|property.*person|own.*forever/,score:10,label:'Extreme moral consequence'},
   {re:/killing of men women and children|kill.*children|children.*killed|amalek|jericho|genocide|total destruction|slaughter/,score:10,label:'Extreme moral consequence'},
@@ -26,8 +26,10 @@ const DAMNING_RULES=[
 ];
 
 let allClaims=[];
+let rebuttalTrees={};
 let shown=PAGE_SIZE;
 let activeStatus='all';
+let openSlug=null;
 let scrollLock=false;
 
 const $=id=>document.getElementById(id);
@@ -63,9 +65,8 @@ function filtered(){
   const sort=$('sortOrder')?.value||'damning';
   const results=allClaims.map(item=>{const dm=damningMeta(item);return {...item,_match:searchScore(item,q),_damning:dm.score,_damningLabel:dm.label};})
     .filter(item=>(!q||item._match>0)&&(cat==='all'||item.category===cat)&&(activeStatus==='all'||item.status===activeStatus));
-
   results.sort((a,b)=>{
-    if(q && b._match!==a._match)return b._match-a._match;
+    if(q&&b._match!==a._match)return b._match-a._match;
     if(sort==='confidence')return confidenceWeight(b)-confidenceWeight(a)||b._damning-a._damning||a.id-b.id;
     if(sort==='alpha')return a.claim.localeCompare(b.claim);
     return b._damning-a._damning||confidenceWeight(b)-confidenceWeight(a)||a.id-b.id;
@@ -73,25 +74,59 @@ function filtered(){
   return results;
 }
 function sourceLinks(sources){return (sources||[]).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)} ↗</a>`).join('');}
-function card(item,rank){
-  const url=`/claim/${encodeURIComponent(item.slug)}`;
-  const score=Number(item._damning).toFixed(item._damning%1?1:0);
-  return `<article class="claim-card ${item._damning>=9.5?'top-damning':''}">
-    <div class="impact-row">
-      <div class="rank-block"><span class="rank-no">#${rank}</span><span class="rank-label">ranked evidence</span></div>
-      <div class="damning-score" title="Editorial Damning Score: severity + source directness + evidential clarity + doctrinal importance"><strong>${score}</strong><span>/10</span><em>${severityLabel(item._damning)}</em></div>
+function treeFor(item){
+  const branches=rebuttalTrees[item.slug];
+  if(Array.isArray(branches)&&branches.length)return branches;
+  return [{
+    defense:item.steelman,
+    response:item.analysis,
+    followup:'This file currently has the primary steelman loaded. Additional apologetic branches are being added as the database expands.'
+  }];
+}
+function defenseTree(item){
+  const branches=treeFor(item);
+  return `<div class="defense-tree">
+    <div class="tree-title"><h3>Apologetic defense tree</h3><span>${branches.length} ${branches.length===1?'defense':'defenses'} mapped</span></div>
+    <div class="tree-list">${branches.map((branch,index)=>`<section class="defense-node">
+      <div class="branch-index">BRANCH ${String(index+1).padStart(2,'0')}</div>
+      <div class="micro-label">They say</div>
+      <div class="they-say">“${esc(branch.defense)}”</div>
+      <div class="response-block"><strong>Evidence response</strong>${esc(branch.response)}</div>
+      <div class="followup"><b>If they pivot:</b> ${esc(branch.followup)}</div>
+    </section>`).join('')}</div>
+  </div>`;
+}
+function dossier(item){
+  return `<div class="inline-dossier" id="dossier-${esc(item.slug)}">
+    <div class="dossier-head"><strong>CASE OPEN // ${esc(item.slug.replaceAll('-',' ').toUpperCase())}</strong><span>follow every pivot</span></div>
+    <div class="core-grid">
+      <section class="core-box defense"><span class="micro-label">Strongest reasonable defense</span><p>${esc(item.steelman)}</p></section>
+      <section class="core-box audit"><span class="micro-label">Core evidence audit</span><p>${esc(item.analysis)}</p></section>
     </div>
-    <div class="impact-caption">${esc(item._damningLabel)}</div>
-    <div class="card-top"><div class="badges"><span class="badge ${esc(item.status)}">${esc(STATUS_LABELS[item.status]||item.status)}</span><span class="badge">${esc(item.category)}</span><span class="badge">${esc(item.confidence)} evidence confidence</span></div><span class="meta">Audit #${item.id}</span></div>
-    <div class="claim-title">${esc(item.claim)}</div>
-    <div class="verdict">${esc(item.verdict)}</div>
-    <details><summary class="label audit-toggle">Open strongest defense + full audit</summary>
-      <div class="label">Strongest defense</div><div class="details steelman">${esc(item.steelman)}</div>
-      <div class="label">Evidence audit</div><div class="details audit">${esc(item.analysis)}</div>
-      <div class="label">Evidence</div><ul class="evidence-list">${(item.evidence||[]).map(e=>`<li>${esc(e)}</li>`).join('')}</ul>
-      <div class="label">Sources</div><div class="source-links">${sourceLinks(item.sources)}</div>
-    </details>
-    <div class="card-actions"><a href="${url}">Open permanent page</a><button type="button" data-copy="${esc(item.slug)}">Copy rebuttal</button><button type="button" data-share="${esc(item.slug)}">Share</button></div>
+    ${defenseTree(item)}
+    <div class="evidence-zone">
+      <section class="evidence-panel"><span class="micro-label">Evidence on record</span><ul class="evidence-list">${(item.evidence||[]).map(e=>`<li>${esc(e)}</li>`).join('')}</ul></section>
+      <section class="evidence-panel"><span class="micro-label">Open the sources yourself</span><div class="source-links">${sourceLinks(item.sources)}</div></section>
+    </div>
+    <div class="card-actions"><a href="/claim/${encodeURIComponent(item.slug)}">Open standalone dossier</a><button type="button" data-copy="${esc(item.slug)}">Copy full rebuttal</button><button type="button" data-share="${esc(item.slug)}">Share case</button></div>
+  </div>`;
+}
+function card(item,rank){
+  const score=Number(item._damning).toFixed(item._damning%1?1:0);
+  const isOpen=openSlug===item.slug;
+  return `<article class="claim-card ${item._damning>=9.5?'top-damning':''} ${isOpen?'open':''}" data-card="${esc(item.slug)}">
+    <button class="claim-hit" type="button" data-expand="${esc(item.slug)}" aria-expanded="${isOpen}">
+      <span class="impact-row">
+        <span class="rank-block"><span class="rank-no">#${rank}</span><span class="rank-label">ranked case</span></span>
+        <span class="damning-score" title="Editorial Damning Score: consequence + source directness + evidential clarity + doctrinal importance"><strong>${score}</strong><span>/10</span><em>${severityLabel(item._damning)}</em></span>
+      </span>
+      <span class="impact-caption">${esc(item._damningLabel)}</span>
+      <span class="card-top"><span class="badges"><span class="badge ${esc(item.status)}">${esc(STATUS_LABELS[item.status]||item.status)}</span><span class="badge">${esc(item.category)}</span><span class="badge">${esc(item.confidence)} evidence confidence</span></span><span class="meta">Audit #${item.id}</span></span>
+      <span class="claim-title">${esc(item.claim)}</span>
+      <span class="verdict">${esc(item.verdict)}</span>
+      <span class="open-prompt">${isOpen?'Close case file':'Open case + defense tree'}</span>
+    </button>
+    ${isOpen?dossier(item):''}
   </article>`;
 }
 function render(){
@@ -99,30 +134,42 @@ function render(){
   $('feed').innerHTML=page.map((item,index)=>card(item,index+1)).join('');
   $('emptyState').hidden=page.length!==0;
   $('claimCount').textContent=String(allClaims.length);
+  $('treeCount').textContent=`${Object.keys(rebuttalTrees).length} loaded`;
   const q=$('searchInput')?.value.trim();
   const sortLabel={damning:'Damning Score',confidence:'evidence confidence',alpha:'A–Z'}[$('sortOrder')?.value||'damning'];
-  $('resultsText').textContent=results.length?(q?`${results.length} matches • best match first`:`${results.length} audits • ranked by ${sortLabel}`):'No matching audits yet';
+  $('resultsText').textContent=results.length?(q?`${results.length} matches // best match first`:`${results.length} case files // ranked by ${sortLabel}`):'No matching case files';
   bindActions();
 }
 function bindActions(){
-  document.querySelectorAll('[data-copy]').forEach(btn=>btn.onclick=()=>copyRebuttal(btn.dataset.copy));
-  document.querySelectorAll('[data-share]').forEach(btn=>btn.onclick=()=>shareClaim(btn.dataset.share));
+  document.querySelectorAll('[data-expand]').forEach(btn=>btn.onclick=()=>toggleClaim(btn.dataset.expand));
+  document.querySelectorAll('[data-copy]').forEach(btn=>btn.onclick=e=>{e.stopPropagation();copyRebuttal(btn.dataset.copy);});
+  document.querySelectorAll('[data-share]').forEach(btn=>btn.onclick=e=>{e.stopPropagation();shareClaim(btn.dataset.share);});
 }
+function toggleClaim(slug){openSlug=openSlug===slug?null:slug;render();}
 function bySlug(slug){return allClaims.find(c=>c.slug===slug);}
 async function copyText(text){try{await navigator.clipboard.writeText(text);}catch{const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}}
-async function copyRebuttal(slug){const item=bySlug(slug);if(!item)return;const dm=damningMeta(item);const text=`Claim: ${item.claim}\n\nVerdict: ${item.verdict}\nDamning Score: ${dm.score}/10 (${dm.label})\nEvidence confidence: ${item.confidence}\n\nStrongest defense: ${item.steelman}\n\nEvidence audit: ${item.analysis}\n\nSources: ${(item.sources||[]).map(s=>s.url).join(' | ')}\n\n${location.origin}/claim/${item.slug}`;await copyText(text);}
+async function copyRebuttal(slug){
+  const item=bySlug(slug);if(!item)return;
+  const dm=damningMeta(item);const branches=treeFor(item);
+  const treeText=branches.map((b,i)=>`Defense ${i+1}: ${b.defense}\nResponse: ${b.response}\nIf they pivot: ${b.followup}`).join('\n\n');
+  const text=`MYTH AUDIT // CASE FILE\n\nClaim: ${item.claim}\nVerdict: ${item.verdict}\nDamning Score: ${dm.score}/10 (${dm.label})\nEvidence confidence: ${item.confidence}\n\nStrongest defense: ${item.steelman}\n\nCore audit: ${item.analysis}\n\nCOMMON DEFENSES\n${treeText}\n\nSources: ${(item.sources||[]).map(s=>s.url).join(' | ')}\n\n${location.origin}/claim/${item.slug}`;
+  await copyText(text);
+}
 async function shareClaim(slug){const item=bySlug(slug);if(!item)return;const url=`${location.origin}/claim/${item.slug}`;if(navigator.share){try{return await navigator.share({title:`Myth Audit: ${item.claim}`,text:item.verdict,url});}catch{}}await copyText(url);}
 function populateCategories(){const select=$('categoryFilter');const cats=[...new Set(allClaims.map(c=>c.category))].sort();select.innerHTML='<option value="all">All categories</option>'+cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');}
 function syncQuery(){const q=new URLSearchParams(location.search).get('q');if(q)$('searchInput').value=q;}
 async function init(){
   try{
-    const res=await fetch(DATA_URL,{cache:'no-store'}); if(!res.ok)throw new Error(`HTTP ${res.status}`);
-    allClaims=await res.json(); populateCategories(); syncQuery(); render();
-    $('searchInput').addEventListener('input',()=>{shown=PAGE_SIZE;render();});
-    $('categoryFilter').addEventListener('change',()=>{shown=PAGE_SIZE;render();});
-    $('sortOrder').addEventListener('change',()=>{shown=PAGE_SIZE;render();});
-    document.querySelectorAll('[data-status]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-status]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeStatus=btn.dataset.status;shown=PAGE_SIZE;render();}));
+    const [claimsRes,treesRes]=await Promise.all([fetch(DATA_URL,{cache:'no-store'}),fetch(TREE_URL,{cache:'no-store'})]);
+    if(!claimsRes.ok)throw new Error(`Claims HTTP ${claimsRes.status}`);
+    allClaims=await claimsRes.json();
+    rebuttalTrees=treesRes.ok?await treesRes.json():{};
+    populateCategories();syncQuery();render();
+    $('searchInput').addEventListener('input',()=>{shown=PAGE_SIZE;openSlug=null;render();});
+    $('categoryFilter').addEventListener('change',()=>{shown=PAGE_SIZE;openSlug=null;render();});
+    $('sortOrder').addEventListener('change',()=>{shown=PAGE_SIZE;openSlug=null;render();});
+    document.querySelectorAll('[data-status]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-status]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeStatus=btn.dataset.status;shown=PAGE_SIZE;openSlug=null;render();}));
     window.addEventListener('scroll',()=>{if(scrollLock)return;const results=filtered();if(shown>=results.length)return;if(innerHeight+scrollY<document.body.offsetHeight-700)return;scrollLock=true;shown+=PAGE_SIZE;render();setTimeout(()=>scrollLock=false,180);});
-  }catch(err){$('feed').innerHTML=`<div class="empty">Claim database failed to load. ${esc(err.message)}</div>`;console.error(err);}
+  }catch(err){$('feed').innerHTML=`<div class="empty">Evidence archive failed to load. ${esc(err.message)}</div>`;console.error(err);}
 }
 init();
