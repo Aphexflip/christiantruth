@@ -4,35 +4,69 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1623067326733757" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Religious claims audited against science, history, archaeology, philosophy, and the texts themselves. Read the strongest defense, then inspect the evidence." />
+  <meta name="description" content="Religious claims ranked by how damaging they are to religious truth or moral-authority claims, then audited against science, history, archaeology, philosophy, and the texts themselves." />
   <meta name="theme-color" content="#090a0d" />
-  <title>Myth Audit — Religious Claims, Tested</title>
+  <title>Myth Audit — Religious Claims, Ranked & Tested</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
 <header class="topbar">
   <div class="wrap topbar-inner">
     <a href="#top" class="brand">MYTH <b>AUDIT</b></a>
-    <nav class="nav"><a href="#claims">Claims</a><a href="#research">Deep dives</a><a href="#method">Method</a></nav>
+    <nav class="nav"><a href="#claims">Claim database</a><a href="#research">Deep dives</a><a href="#method">Method</a></nav>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero wrap">
-    <div class="eyebrow">Claims are cheap • evidence isn't</div>
-    <h1>If it's true,<br>it should survive <span>inspection.</span></h1>
-    <p class="lede">Religious claims tested against science, history, archaeology, philosophy, and the texts themselves. We state the strongest defense first, then show what the evidence can actually support.</p>
-    <div class="hero-actions"><a class="button primary" href="#claims">Audit a claim</a><a class="button" href="#research">Investigate religion & power</a></div>
-    <div class="principle"><strong>No immunity for sacred claims.</strong> Age, popularity, tradition, personal certainty, scripture, clergy, and threats of punishment do not lower the evidence standard. But skeptical claims get audited too. If our side is wrong, we correct it.</div>
-    <div class="stats">
+  <section class="audit-front wrap" id="claims">
+    <div class="front-copy">
+      <div class="eyebrow">Claims are cheap • evidence isn't</div>
+      <h1>The claim database.</h1>
+      <p class="lede">Start with the evidence that creates the biggest problem for religious truth claims and moral authority. Ranked first by <strong>Damning Score</strong>, then audited with the strongest defense and sources.</p>
+    </div>
+
+    <div class="front-metrics">
       <div class="stat"><small>Audited claims</small><b id="claimCount">0</b></div>
-      <div class="stat"><small>Every audit includes</small><b>Steelman</b></div>
-      <div class="stat"><small>Verdict changes when</small><b>Evidence does</b></div>
+      <div class="stat critical"><small>Default ranking</small><b>Most damning first</b></div>
+      <div class="stat"><small>Every audit</small><b>Steelman + sources</b></div>
+    </div>
+
+    <div class="score-note"><strong>Damning Score:</strong> an editorial 1–10 ranking of how strongly a claim challenges a religion's truth claims or moral authority, based on severity, directness of the source, evidential clarity, and doctrinal importance. It is a ranking tool—not a scientific measurement.</div>
+
+    <div class="database-shell">
+      <div class="database-head">
+        <div>
+          <div class="kicker">Ranked evidence feed</div>
+          <h2>Most damaging evidence first.</h2>
+        </div>
+        <div id="resultsText" class="countline">Loading audits…</div>
+      </div>
+
+      <div class="toolbar toolbar-3">
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Search: children killed, slavery, hell, prayer, resurrection, flood…" />
+        <select id="categoryFilter"><option value="all">All categories</option></select>
+        <select id="sortOrder" aria-label="Sort claims">
+          <option value="damning">Most damning</option>
+          <option value="confidence">Strongest evidence</option>
+          <option value="alpha">A–Z</option>
+        </select>
+      </div>
+
+      <div class="filters" id="statusFilters">
+        <button class="filter active" data-status="all">All verdicts</button>
+        <button class="filter" data-status="supported">Supported</button>
+        <button class="filter" data-status="misleading">Misleading</button>
+        <button class="filter" data-status="unsupported">Unsupported</button>
+        <button class="filter" data-status="complex">More complicated</button>
+      </div>
+
+      <div class="feed" id="feed"></div>
+      <div class="empty" id="emptyState" hidden>No matching audit yet. Try fewer words or a different phrasing.</div>
     </div>
   </section>
 
   <section class="section wrap" id="research">
-    <div class="section-head"><div><h2>Religion, power, and the parts people skip.</h2><p class="section-copy">The goal is not a cartoon conspiracy. It is tracing exactly where divine authority overlaps with human interests: kings, temples, priesthoods, scribes, conquest, slavery, social boundaries, and later church-state power.</p></div></div>
+    <div class="section-head"><div><div class="kicker">Go deeper</div><h2>Religion, power, and the parts people skip.</h2><p class="section-copy">Trace exactly where claims of divine authority intersect with conquest, slavery, priesthoods, kings, scribes, social boundaries, and later church-state power.</p></div></div>
     <div class="research-grid">
       <article class="feature">
         <div class="eyebrow">Featured investigation</div>
@@ -49,40 +83,20 @@
     </div>
   </section>
 
-  <section class="section wrap" id="claims">
-    <div class="section-head">
-      <div><h2>Claim audit database</h2><p class="section-copy">Type the argument the way you actually heard it. The closest audits rise to the top. Each permanent page includes the strongest defense and sources you can open yourself.</p></div>
-      <div id="resultsText" class="countline">Loading audits…</div>
-    </div>
-    <div class="toolbar">
-      <input id="searchInput" type="search" autocomplete="off" placeholder="Try: God ordered children killed, prayer works, eyewitness gospels, slavery, fine tuning…" />
-      <select id="categoryFilter"><option value="all">All categories</option></select>
-    </div>
-    <div class="filters" id="statusFilters">
-      <button class="filter active" data-status="all">All verdicts</button>
-      <button class="filter" data-status="unsupported">Unsupported</button>
-      <button class="filter" data-status="misleading">Misleading</button>
-      <button class="filter" data-status="complex">More complicated</button>
-      <button class="filter" data-status="supported">Supported</button>
-    </div>
-    <div class="feed" id="feed"></div>
-    <div class="empty" id="emptyState" hidden>No matching audit yet. Try fewer words or a different phrasing.</div>
-  </section>
-
   <section class="section wrap" id="method">
-    <div class="section-head"><div><h2>The debate rules.</h2><p class="section-copy">A site built only to say “religion bad” is easy to ignore. A site that consistently applies the same standard to believers and skeptics can become a reference people actually trust.</p></div></div>
+    <div class="section-head"><div><div class="kicker">Why trust the ranking?</div><h2>The debate rules.</h2><p class="section-copy">The site gets stronger by refusing easy propaganda. A brutal claim with weak evidence ranks below a brutal claim directly stated in the text and supported by strong historical evidence.</p></div></div>
     <div class="ethos">
-      <div class="mini"><b>1. Attack the proposition</b><span>Religion is a protected identity for real people. The target here is claims, doctrines, texts, institutions, and evidence—not harassment of believers.</span></div>
+      <div class="mini"><b>1. Attack the proposition</b><span>The target is claims, doctrines, texts, institutions, and evidence—not harassment of believers.</span></div>
       <div class="mini"><b>2. Steelman before rebuttal</b><span>Use the strongest defensible version of the religious argument. Beating a weak caricature proves nothing.</span></div>
-      <div class="mini"><b>3. Separate four questions</b><span>What does the text say? What probably happened historically? What follows philosophically? Is it morally defensible? Do not blur them.</span></div>
-      <div class="mini"><b>4. “Unknown” is allowed</b><span>Not knowing a natural explanation does not prove God. But lack of proof against God does not prove atheism either.</span></div>
-      <div class="mini"><b>5. Link primary evidence</b><span>Where possible, show scripture, papers, museum evidence, university scholarship, or reference works—not screenshots of someone else's opinion.</span></div>
-      <div class="mini"><b>6. Correct ourselves publicly</b><span>A visible correction policy is an advantage. Religious truth claims should be falsifiable; our claims should be too.</span></div>
+      <div class="mini"><b>3. Rank severity separately</b><span>A 10/10 Damning Score means “high consequence if true,” not “10/10 proof.” Evidence confidence is shown separately.</span></div>
+      <div class="mini"><b>4. Separate four questions</b><span>What does the text say? What probably happened historically? What follows philosophically? Is it morally defensible?</span></div>
+      <div class="mini"><b>5. Link primary evidence</b><span>Where possible, show scripture, papers, museum evidence, university scholarship, or reference works.</span></div>
+      <div class="mini"><b>6. Correct ourselves publicly</b><span>Religious truth claims should be falsifiable; our claims should be too.</span></div>
     </div>
   </section>
 </main>
 
-<footer class="footer"><div class="wrap"><strong>MYTH AUDIT</strong> — religious claims, inspected without special pleading. Current home: christiantruth.online. Working brand subject to change before launch.</div></footer>
+<footer class="footer"><div class="wrap"><strong>MYTH AUDIT</strong> — religious claims ranked, steelmanned, and inspected without special pleading. Current home: christiantruth.online. Working brand subject to change before launch.</div></footer>
 
 <script src="/app.js" defer></script>
 
