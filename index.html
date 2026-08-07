@@ -1,784 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1623067326733757"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1623067326733757" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChristianTruth.ai</title>
-  <meta name="description" content="Ask a claim. Get the truth. A fast growing database of short factual responses to religious claims." />
-  <style>
-    :root {
-      --bg: #0a0a0b;
-      --panel: #121316;
-      --panel-2: #17191d;
-      --text: #f3f4f6;
-      --muted: #a1a1aa;
-      --line: #27272a;
-      --accent: #ef4444;
-      --accent-2: #f97316;
-      --good: #22c55e;
-      --max: 980px;
-      --radius: 22px;
-      --shadow: 0 20px 50px rgba(0,0,0,.35);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(239,68,68,.12), transparent 35%),
-        radial-gradient(circle at 80% 10%, rgba(249,115,22,.09), transparent 25%),
-        var(--bg);
-      color: var(--text);
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .wrap {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(10,10,11,.78);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
-    }
-
-    .brand {
-      font-weight: 900;
-      letter-spacing: -.03em;
-      font-size: 1.05rem;
-    }
-
-    .brand span { color: var(--accent); }
-
-    .nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .pill, .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-size: .94rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: .18s ease;
-    }
-
-    .button.primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      border: none;
-      box-shadow: var(--shadow);
-    }
-
-    .pill:hover, .button:hover { transform: translateY(-1px); }
-
-    .hero {
-      padding: 56px 0 28px;
-    }
-
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 30px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(239,68,68,.12);
-      color: #fecaca;
-      font-weight: 800;
-      font-size: .8rem;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.2rem, 7vw, 4.6rem);
-      line-height: .95;
-      letter-spacing: -.05em;
-    }
-
-    .sub {
-      color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.18rem);
-      line-height: 1.6;
-      max-width: 720px;
-      margin: 16px 0 24px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .stat {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: .77rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .stat-value {
-      font-size: 1.7rem;
-      font-weight: 900;
-      letter-spacing: -.03em;
-    }
-
-    .section {
-      padding: 18px 0 26px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: -.03em;
-      margin: 0;
-    }
-
-    .section-copy {
-      color: var(--muted);
-      margin: 6px 0 0;
-      line-height: 1.5;
-    }
-
-    .toolbar {
-      display: grid;
-      grid-template-columns: 1.3fr .9fr auto;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      color: var(--text);
-      border-radius: 18px;
-      padding: 14px 16px;
-      font: inherit;
-      outline: none;
-    }
-
-    input::placeholder, textarea::placeholder { color: #71717a; }
-
-    .feed {
-      display: grid;
-      gap: 14px;
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .card-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-size: .82rem;
-      font-weight: 800;
-      color: #e4e4e7;
-    }
-
-    .badge.red {
-      background: rgba(239,68,68,.1);
-      color: #fecaca;
-      border-color: rgba(239,68,68,.2);
-    }
-
-    .label {
-      font-size: .72rem;
-      font-weight: 900;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      margin-bottom: 8px;
-    }
-
-    .claim {
-      font-size: clamp(1.06rem, 2vw, 1.26rem);
-      font-weight: 800;
-      line-height: 1.35;
-      margin-bottom: 16px;
-    }
-
-    .response {
-      color: #e4e4e7;
-      line-height: 1.7;
-      font-size: 1rem;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .ghost {
-      background: transparent;
-      border: 1px solid var(--line);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .stack { display: grid; gap: 12px; }
-
-    .footer {
-      padding: 34px 0 60px;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .tiny {
-      font-size: .86rem;
-      color: var(--muted);
-    }
-
-    .empty {
-      padding: 30px;
-      text-align: center;
-      color: var(--muted);
-      background: var(--panel);
-      border-radius: 24px;
-      border: 1px dashed var(--line);
-    }
-
-    @media (max-width: 820px) {
-      .stats, .grid-2, .toolbar { grid-template-columns: 1fr; }
-      .topbar-inner { align-items: flex-start; flex-direction: column; }
-      .hero { padding-top: 30px; }
-      .hero-card { padding: 22px; }
-    }
-  </style>
+  <meta name="description" content="Religious claims ranked by consequence, opened inline, steelmanned, and tested against evidence with common apologetic defenses answered one by one." />
+  <meta name="theme-color" content="#030303" />
+  <title>Myth Audit — Open the Claim. Follow the Evidence.</title>
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a href="#top" class="brand">Christian<span>Truth</span>.ai</a>
-      <nav class="nav">
-        <a class="pill" href="#claims">Claims</a>
-        <a class="pill" href="#submit">Submit</a>
-        <a class="pill" href="#support">Support</a>
-      </nav>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="#top" class="brand"><span class="brand-mark">M</span><span>MYTH//<b>AUDIT</b></span></a>
+    <nav class="nav"><a href="#claims">The Index</a><a href="#research">Deep Files</a><a href="#method">Rules</a></nav>
+  </div>
+</header>
+
+<div class="threatline" aria-hidden="true">
+  <div class="threat-track"><span>NO CLAIM IS SACRED</span><i>◆</i><span>EVIDENCE OVER AUTHORITY</span><i>◆</i><span>OPEN THE FILE</span><i>◆</i><span>FOLLOW EVERY DEFENSE</span><i>◆</i><span>NO CLAIM IS SACRED</span></div>
+</div>
+
+<main id="top">
+  <section class="audit-front wrap" id="claims">
+    <div class="front-copy">
+      <div class="kicker">The Black Index // Evidence Archive</div>
+      <h1>Open the claim.<br><span>Watch the defenses collapse.</span></h1>
+      <p class="lede">The most consequential evidence is loaded first. Click any case to open it <strong>right here</strong>: strongest Christian defense, common apologetic pivots, evidence response, sources, and the next move.</p>
     </div>
-  </header>
 
-  <main id="top">
-    <section class="hero wrap">
-      <div class="hero-card">
-        <div class="eyebrow">Fast rebuttals • searchable • shareable</div>
-        <h1>Ask a claim.<br />Get the truth.</h1>
-        <p class="sub">
-          A blunt, searchable database of short factual responses to religious claims. Built to be linked in debates, shared in comments, and grown into a monster.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#claims">Start scrolling</a>
-          <button class="button ghost" id="copySiteButton" type="button">Copy site link text</button>
-        </div>
+    <div class="front-metrics">
+      <div class="stat"><small>Case files</small><b id="claimCount">0</b></div>
+      <div class="stat critical"><small>Default protocol</small><b>Most damning first</b></div>
+      <div class="stat"><small>Defense trees</small><b id="treeCount">0 loaded</b></div>
+    </div>
 
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-label">Claims loaded</div>
-            <div class="stat-value" id="claimCount">0</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Style</div>
-            <div class="stat-value">Tiny</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Use case</div>
-            <div class="stat-value">Debate ammo</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="warning-strip"><span>⚠</span><strong>DAMNING SCORE IS EDITORIAL.</strong> It ranks consequence, source directness, evidential clarity, and doctrinal importance. Evidence confidence is displayed separately.</div>
 
-    <section class="section wrap" id="claims">
-      <div class="section-head">
+    <div class="database-shell">
+      <div class="database-head">
         <div>
-          <h2 class="section-title">Claim Feed</h2>
-          <p class="section-copy">Search it. Scroll it. Drop the link in arguments and let the site do the talking.</p>
+          <div class="kicker">Restricted archive // ranked case files</div>
+          <h2>The evidence wall.</h2>
+          <p>Click a claim. It opens in place. No page change. No escape hatch hidden behind another tab.</p>
         </div>
-        <div class="tiny" id="resultsText">Loading...</div>
+        <div id="resultsText" class="countline">Loading case files…</div>
       </div>
 
-      <div class="toolbar">
-        <input id="searchInput" type="text" placeholder="Search claims, categories, or responses" />
-        <select id="categoryFilter">
-          <option value="all">All categories</option>
+      <div class="toolbar toolbar-3">
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Search: children killed, slavery, hell, resurrection, prayer, flood…" />
+        <select id="categoryFilter"><option value="all">All categories</option></select>
+        <select id="sortOrder" aria-label="Sort claims">
+          <option value="damning">Most damning</option>
+          <option value="confidence">Strongest evidence</option>
+          <option value="alpha">A–Z</option>
         </select>
-        <button class="button" id="loadMoreButton" type="button">Load more</button>
+      </div>
+
+      <div class="filters" id="statusFilters">
+        <button class="filter active" data-status="all">All verdicts</button>
+        <button class="filter" data-status="supported">Supported</button>
+        <button class="filter" data-status="misleading">Misleading</button>
+        <button class="filter" data-status="unsupported">Unsupported</button>
+        <button class="filter" data-status="complex">More complicated</button>
       </div>
 
       <div class="feed" id="feed"></div>
-      <div class="empty" id="emptyState" style="display:none;">No matches. Try another search and keep swinging.</div>
-    </section>
+      <div class="empty" id="emptyState" hidden>No matching case file. Try fewer words or another phrasing.</div>
+    </div>
+  </section>
 
-    <section class="section wrap" id="submit">
-      <div class="grid-2">
-        <div class="card">
-          <div class="label">Submit a claim</div>
-          <div class="claim">Add new ammo to the database</div>
-          <div class="stack">
-            <input id="newCategory" type="text" placeholder="Category, like Science or Contradictions" />
-            <textarea id="newClaim" rows="3" placeholder="Enter the religious claim"></textarea>
-            <textarea id="newResponse" rows="4" placeholder="Enter the short factual response"></textarea>
-            <button class="button primary" id="addClaimButton" type="button">Add claim to page</button>
-            <div class="tiny">This saves in your browser for now. Later we can hook it to a real database.</div>
-          </div>
-        </div>
-
-        <div class="stack">
-          <div class="card" id="support">
-            <div class="label">Monetization</div>
-            <div class="claim">Start simple. Capture attention first.</div>
-            <div class="response">
-              Best first money path: traffic, email signups, donation links, then a paid PDF or premium debate pack.
-            </div>
-            <div class="card-actions">
-              <a class="button" href="#">Add email signup</a>
-              <a class="button" href="#">Add donation link</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="label">Link drop line</div>
-            <div class="response" id="linkDropText">Already debunked here: ChristianTruth.ai</div>
-            <div class="card-actions">
-              <button class="button" id="copyDebateLine" type="button">Copy debate line</button>
-            </div>
-          </div>
-        </div>
+  <section class="section wrap" id="research">
+    <div class="section-head"><div><div class="kicker">Deep files // institutional power</div><h2>Follow the bloodline of authority.</h2><p class="section-copy">Long-form investigations trace what happened when divine authority intersected with conquest, slavery, priesthoods, kings, scribes, social boundaries, punishment, and church-state power.</p></div></div>
+    <div class="research-grid">
+      <article class="feature">
+        <div class="case-stamp">CASE FILE // POWER</div>
+        <h3>Who benefited from the Bible?</h3>
+        <p>Not a cartoon conspiracy. A historical audit of where scripture, political centralization, priestly authority, conquest ideology, scribal control, community survival, and later imperial Christianity overlap.</p>
+        <p><strong>Inside:</strong> Josiah's reforms, God-ordered slaughter, land claims, priestly authority, low literacy, exile, and church-state power.</p>
+        <a class="button primary" href="/research/who-benefited-from-the-bible.html">Enter the file →</a>
+      </article>
+      <div class="mini-grid">
+        <div class="mini"><b>DIVINE VIOLENCE</b><span>Read the passages first. Then test every attempt to morally sanitize them.</span></div>
+        <div class="mini"><b>HUMAN OWNERSHIP</b><span>Separate temporary debt service from laws that explicitly permit inheritable foreign slaves.</span></div>
+        <div class="mini"><b>NO CHEAP SHOTS</b><span>Constantine did not invent Christianity. Nicaea did not vote the Bible into existence. Bad skeptical claims die here too.</span></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="footer wrap">
-      ChristianTruth.ai • Built for fast launch • Next upgrade: real domain, analytics, email capture, donations, JSON database, and shareable claim pages.
-    </section>
-  </main>
+  <section class="section wrap" id="method">
+    <div class="section-head"><div><div class="kicker">Rules of engagement</div><h2>Make the argument survive contact.</h2><p class="section-copy">The atmosphere can be merciless. The evidence cannot be sloppy. Every defense gets its strongest reasonable form before it gets tested.</p></div></div>
+    <div class="ethos">
+      <div class="mini"><b>01 // TARGET THE CLAIM</b><span>Criticize doctrines, scriptures, institutions, historical actions, and arguments—not people merely for belonging to a religion.</span></div>
+      <div class="mini"><b>02 // STEELMAN FIRST</b><span>Use the strongest defensible Christian reply. If the rebuttal only beats a caricature, it does not belong here.</span></div>
+      <div class="mini"><b>03 // FOLLOW THE PIVOT</b><span>When the answer changes, track the change. The defense tree exists so arguments cannot quietly switch claims midstream.</span></div>
+      <div class="mini"><b>04 // SPLIT THE QUESTIONS</b><span>Text, history, philosophy, and morality are separate evidence problems. Do not blur them.</span></div>
+      <div class="mini"><b>05 // SHOW RECEIPTS</b><span>Primary texts, papers, universities, museums, science agencies, and serious scholarship outrank memes and quote graphics.</span></div>
+      <div class="mini"><b>06 // KILL OUR BAD ARGUMENTS</b><span>If a skeptical claim fails, mark it failed. Credibility is more useful than ideological consistency.</span></div>
+    </div>
+  </section>
+</main>
 
-  <script>
-    const seedClaims = [
-      {
-        category: 'Science',
-        claim: 'The Bible says the Earth is flat.',
-        response: 'No. Earth is measurably round through satellites, circumnavigation, gravity, and direct observation. Flat Earth readings come from poetic verses, not scientific descriptions.'
-      },
-      {
-        category: 'Medicine',
-        claim: 'Prayer has been proven to heal illness.',
-        response: 'No. Controlled studies do not show consistent healing effects beyond placebo, normal recovery, and reporting bias.'
-      },
-      {
-        category: 'Evolution',
-        claim: 'Humans were created exactly as they are now.',
-        response: 'No. Genetics, fossils, and comparative anatomy show humans evolved over time from earlier life forms.'
-      },
-      {
-        category: 'History',
-        claim: 'A global flood covered the whole Earth.',
-        response: 'No. There is no worldwide flood layer, no matching geological timeline, and no evidence that every species bottlenecked through a single boat event.'
-      },
-      {
-        category: 'Logic',
-        claim: 'Everything complex needs a creator, so God must exist.',
-        response: 'No. That only pushes the problem back one step. If complexity requires a creator, then a complex god would need one too.'
-      },
-      {
-        category: 'Textual',
-        claim: 'The Bible is perfectly consistent.',
-        response: 'No. It contains internal contradictions in chronology, numbers, genealogy, and differing versions of the same events.'
-      },
-      {
-        category: 'Astronomy',
-        claim: 'The sun stood still, so scripture is scientifically accurate.',
-        response: 'No. That story conflicts with how planetary motion works and reads as miracle literature, not a physics model.'
-      },
-      {
-        category: 'Morality',
-        claim: 'You cannot have morality without God.',
-        response: 'No. Humans had social rules, empathy, reciprocity, and moral norms long before agreement on any single god claim.'
-      },
-      {
-        category: 'Archaeology',
-        claim: 'Exodus happened exactly as written.',
-        response: 'No. Mainstream archaeology has not found evidence for the mass desert migration and conquest narrative at the biblical scale described.'
-      },
-      {
-        category: 'Biology',
-        claim: 'Life is too complex to arise naturally.',
-        response: 'No. Chemistry produces complexity all the time, and evolution explains how simple replicators can gradually become more complex.'
-      },
-      {
-        category: 'Prayer',
-        claim: 'Answered prayers prove God is real.',
-        response: 'No. Coincidence, selection bias, memory distortion, and unanswered prayers explain that far better than supernatural proof.'
-      },
-      {
-        category: 'Contradiction',
-        claim: 'Faith is a reliable path to truth.',
-        response: 'No. Different religions use faith to reach incompatible conclusions, so faith cannot reliably distinguish truth from error.'
-      },
-      {
-        category: 'Miracles',
-        claim: 'Miracles prove divine intervention.',
-        response: 'No. A claim is not evidence. Extraordinary claims require strong independent verification, and miracle stories almost never meet that bar.'
-      },
-      {
-        category: 'Textual',
-        claim: 'Scripture cannot contain error because it is inspired.',
-        response: 'No. Inspiration is a belief about the text, not proof that the text is historically or scientifically correct.'
-      },
-      {
-        category: 'Science',
-        claim: 'Creationism explains biology better than evolution.',
-        response: 'No. Evolution makes testable predictions and is supported by genetics, fossils, observed adaptation, and common ancestry.'
-      },
-      {
-        category: 'History',
-        claim: 'Martyrdom proves the religion is true.',
-        response: 'No. People die for false beliefs all the time. Sincerity proves conviction, not correctness.'
-      },
-      {
-        category: 'Philosophy',
-        claim: 'God is the best explanation for existence.',
-        response: 'No. It is only an assertion unless it explains more with fewer assumptions than natural explanations.'
-      },
-      {
-        category: 'Society',
-        claim: 'Without religion society would collapse.',
-        response: 'No. Highly secular societies function just fine with law, empathy, cooperation, and social accountability.'
-      },
-      {
-        category: 'Bible',
-        claim: 'The Bible predicted modern science.',
-        response: 'No. Believers usually retrofit vague verses after discoveries are already known.'
-      },
-      {
-        category: 'Justice',
-        claim: 'Hell is perfectly just.',
-        response: 'No. Infinite punishment for finite mistakes is wildly disproportionate by any normal moral standard.'
-      }
-    ];
+<footer class="footer"><div class="wrap"><strong>MYTH//AUDIT</strong> — open the claim, steelman the defense, follow the evidence. Current home: christiantruth.online. Working brand subject to change before launch.</div></footer>
 
-    const extraTemplates = [
-      {
-        category: 'Bible',
-        claim: 'Biblical prophecy proves divine authorship.',
-        response: 'No. Many prophecies are vague, written after the fact, or depend on selective interpretation.'
-      },
-      {
-        category: 'Logic',
-        claim: 'You cannot disprove God, so belief wins.',
-        response: 'No. Failure to disprove a claim is not proof the claim is true.'
-      },
-      {
-        category: 'Science',
-        claim: 'There are gaps in evolution, so creationism wins.',
-        response: 'No. A gap in knowledge does not prove a supernatural answer.'
-      },
-      {
-        category: 'Morality',
-        claim: 'Atheists have no basis for right and wrong.',
-        response: 'No. Human wellbeing, harm reduction, reciprocity, and social cooperation provide moral frameworks without gods.'
-      },
-      {
-        category: 'Textual',
-        claim: 'Thousands of Bible manuscripts prove perfect accuracy.',
-        response: 'No. Many manuscripts means many variants. It proves transmission, not perfection.'
-      },
-      {
-        category: 'Prayer',
-        claim: 'Millions believe, so it must be true.',
-        response: 'No. Popularity measures social spread, not truth.'
-      }
-    ];
+<script src="/app.js" defer></script>
 
-    const storageKey = 'christiantruth_ai_claims';
-    const feed = document.getElementById('feed');
-    const emptyState = document.getElementById('emptyState');
-    const claimCount = document.getElementById('claimCount');
-    const resultsText = document.getElementById('resultsText');
-    const searchInput = document.getElementById('searchInput');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const loadMoreButton = document.getElementById('loadMoreButton');
-    const addClaimButton = document.getElementById('addClaimButton');
-    const newCategory = document.getElementById('newCategory');
-    const newClaim = document.getElementById('newClaim');
-    const newResponse = document.getElementById('newResponse');
-    const copyDebateLine = document.getElementById('copyDebateLine');
-    const copySiteButton = document.getElementById('copySiteButton');
-
-    let claims = loadClaims();
-    let visibleCount = 8;
-    let scrollLock = false;
-
-    function loadClaims() {
-      const local = localStorage.getItem(storageKey);
-      if (!local) return seedClaims.map((item, i) => ({ id: i + 1, ...item }));
-      try {
-        const parsed = JSON.parse(local);
-        if (Array.isArray(parsed) && parsed.length) return parsed;
-      } catch (err) {}
-      return seedClaims.map((item, i) => ({ id: i + 1, ...item }));
-    }
-
-    function saveClaims() {
-      localStorage.setItem(storageKey, JSON.stringify(claims));
-    }
-
-    function getFilteredClaims() {
-      const q = searchInput.value.trim().toLowerCase();
-      const category = categoryFilter.value;
-      return claims.filter(item => {
-        const matchesCategory = category === 'all' || item.category === category;
-        const hay = `${item.category} ${item.claim} ${item.response}`.toLowerCase();
-        const matchesSearch = !q || hay.includes(q);
-        return matchesCategory && matchesSearch;
-      });
-    }
-
-    function refreshCategories() {
-      const current = categoryFilter.value;
-      const categories = ['all', ...new Set(claims.map(c => c.category).sort((a,b) => a.localeCompare(b)))];
-      categoryFilter.innerHTML = categories.map(cat => `<option value="${escapeHtml(cat)}">${cat === 'all' ? 'All categories' : escapeHtml(cat)}</option>`).join('');
-      if (categories.includes(current)) categoryFilter.value = current;
-    }
-
-    function render() {
-      refreshCategories();
-      const filtered = getFilteredClaims();
-      const shown = filtered.slice(0, visibleCount);
-      const hasMore = visibleCount < filtered.length;
-
-      claimCount.textContent = String(claims.length);
-      resultsText.textContent = hasMore
-        ? `Showing ${shown.length} of ${filtered.length} matches • scroll for more`
-        : `Showing all ${filtered.length} matches`;
-
-      if (!shown.length) {
-        feed.innerHTML = '';
-        emptyState.style.display = 'block';
-        loadMoreButton.style.display = 'none';
-        return;
-      }
-
-      emptyState.style.display = 'none';
-
-      feed.innerHTML = shown.map(item => `
-        <article class="card">
-          <div class="card-top">
-            <span class="badge red">${escapeHtml(item.category)}</span>
-            <span class="badge">#${item.id}</span>
-          </div>
-          <div class="label">Claim</div>
-          <div class="claim">${escapeHtml(item.claim)}</div>
-          <div class="label">Response</div>
-          <div class="response">${escapeHtml(item.response)}</div>
-          <div class="card-actions">
-            <button class="button ghost" type="button" onclick="copyText(${JSON.stringify(`Claim: ${item.claim}\nResponse: ${item.response}`)})">Copy card</button>
-            <button class="button ghost" type="button" onclick="copyText(${JSON.stringify(`Already debunked here: ChristianTruth.ai\n\nClaim: ${item.claim}\nResponse: ${item.response}`)})">Copy debate reply</button>
-          </div>
-        </article>
-      `).join('');
-
-      loadMoreButton.style.display = hasMore ? 'inline-flex' : 'none';
-    }
-
-    function addMoreClaims(amount = 8) {
-      const start = claims.length;
-      for (let i = 0; i < amount; i++) {
-        const t = extraTemplates[(start + i) % extraTemplates.length];
-        claims.push({ id: claims.length + 1, ...t });
-      }
-      saveClaims();
-    }
-
-    function escapeHtml(text) {
-      return String(text)
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#039;');
-    }
-
-    async function copyText(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch (err) {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-      }
-    }
-
-    window.copyText = copyText;
-
-    searchInput.addEventListener('input', () => {
-      visibleCount = 8;
-      render();
-    });
-
-    categoryFilter.addEventListener('change', () => {
-      visibleCount = 8;
-      render();
-    });
-
-    loadMoreButton.addEventListener('click', () => {
-      const filtered = getFilteredClaims();
-      if (visibleCount >= filtered.length) {
-        addMoreClaims(8);
-      }
-      visibleCount += 8;
-      render();
-    });
-
-    addClaimButton.addEventListener('click', () => {
-      const category = newCategory.value.trim() || 'General';
-      const claim = newClaim.value.trim();
-      const response = newResponse.value.trim();
-      if (!claim || !response) return;
-      claims.unshift({ id: claims.length + 1, category, claim, response });
-      newCategory.value = '';
-      newClaim.value = '';
-      newResponse.value = '';
-      visibleCount = Math.max(visibleCount, 8);
-      saveClaims();
-      render();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    copyDebateLine.addEventListener('click', () => copyText('Already debunked here: ChristianTruth.ai'));
-    copySiteButton.addEventListener('click', () => copyText('ChristianTruth.ai'));
-
-    window.addEventListener('scroll', () => {
-      if (scrollLock) return;
-
-      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 700;
-      if (!nearBottom) return;
-
-      const filtered = getFilteredClaims();
-      scrollLock = true;
-
-      if (visibleCount < filtered.length) {
-        visibleCount += 8;
-        render();
-      } else {
-        addMoreClaims(8);
-        visibleCount += 8;
-        render();
-      }
-
-      setTimeout(() => {
-        scrollLock = false;
-      }, 250);
-    });
-
-    render();
-  </script>
-
-  <!-- FLOATING EMAIL BOX -->
-  <div id="email-widget">
-    <script async data-uid="33aacd08e9" src="https://christiantruth-online.kit.com/33aacd08e9/index.js"></script>
-  </div>
-
-  <style>
-    #email-widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      width: 300px;
-      max-width: 90vw;
-    }
-
-    #email-widget iframe {
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-  </style>
+<!-- Existing Kit email capture preserved -->
+<div id="email-widget"><script async data-uid="33aacd08e9" src="https://christiantruth-online.kit.com/33aacd08e9/index.js"></script></div>
+<style>#email-widget{position:fixed;bottom:20px;right:20px;z-index:9999;width:300px;max-width:90vw}#email-widget iframe{border-radius:2px;box-shadow:0 14px 45px rgba(0,0,0,.72)}</style>
 </body>
 </html>
